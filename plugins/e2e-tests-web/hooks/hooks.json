@@ -1,0 +1,12 @@
+{
+  "PostInstall": [
+    {
+      "type": "command",
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/check-playwright.js"
+    },
+    {
+      "type": "command",
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/setup-mcp-playwright.sh"
+    }
+  ]
+}

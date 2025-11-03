@@ -1,22 +1,158 @@
-# Root Cause Analysis: Marketplace Validation Error
+# Root Cause Analysis: Plugin Validation Errors
 
-## 🐛 Error
+## 🐛 Errors
 
+### Error 1: Marketplace Schema Validation
 ```bash
 /plugin marketplace add https://github.com/venturo-id/venturo-claude.git
 ⎿ Error: Invalid schema: plugins.0.hooks: Invalid input
 ```
 
-## 🔍 Root Cause
+### Error 2: Plugin Manifest Validation
+```bash
+Plugin e2e-tests-web has an invalid manifest file.
+Validation errors: 
+  - repository: Expected string, received object
+  - hooks: Invalid input
+```
 
-**Issue:** Hooks and MCP servers were defined directly in `marketplace.json`
+---
 
-**Why it failed:**
-- ❌ Marketplace schema does NOT support `hooks` and `mcpServers` fields directly
-- ✅ These fields are only valid in `plugin.json` (plugin manifest)
-- ⚠️ Marketplace entries can only contain metadata fields, not component configurations
+## 🔍 Root Cause Analysis
 
-## 📚 Schema Reference
+### Issue 1: Marketplace Schema (Fixed ✅)
+**Problem:** `hooks` and `mcpServers` defined in `marketplace.json`
+- ❌ Marketplace schema does NOT support component configuration
+- ✅ These fields only valid in `plugin.json`
+
+**Solution:** Removed from marketplace.json
+
+### Issue 2: Plugin Manifest Schema (Fixed ✅)
+
+#### Problem 2.1: Repository Format
+**Error:** `repository: Expected string, received object`
+
+**Incorrect:**
+```json
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/venturo-id/venturo-claude"
+  }
+}
+```
+
+**Correct:**
+```json
+{
+  "repository": "https://github.com/venturo-id/venturo-claude"
+}
+```
+
+**Why:** Claude Code plugin schema expects `repository` as a simple string URL, not an npm-style object.
+
+#### Problem 2.2: Hooks Format
+**Error:** `hooks: Invalid input`
+
+**Issue:** Inline hooks object in plugin.json was not following proper schema for PostInstall events.
+
+**Solution:** Move hooks to separate file
+
+**Before:**
+```json
+{
+  "hooks": {
+    "PostInstall": [...]
+  }
+}
+```
+
+**After:**
+```json
+{
+  "hooks": "./hooks/hooks.json"
+}
+```
+
+---
+
+## 🔧 Solution Applied
+
+### 1. Fixed `plugin.json` Format
+
+**File:** `plugins/e2e-tests-web/.claude-plugin/plugin.json`
+
+Changes:
+- ✅ Changed `repository` from object → string
+- ✅ Changed `hooks` from inline object → file path
+- ✅ Changed `mcpServers` from inline object → file path
+
+**Final structure:**
+```json
+{
+  "name": "playwright-e2e-automation",
+  "description": "...",
+  "version": "1.0.0",
+  "author": {...},
+  "repository": "https://github.com/venturo-id/venturo-claude",
+  "keywords": [...],
+  "license": "MIT",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json"
+}
+```
+
+### 2. Created Separate Config Files
+
+#### hooks/hooks.json
+```json
+{
+  "PostInstall": [
+    {
+      "type": "command",
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/check-playwright.js"
+    },
+    {
+      "type": "command",
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/setup-mcp-playwright.sh"
+    }
+  ]
+}
+```
+
+#### .mcp.json
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp-server"],
+      "env": {"PLAYWRIGHT_BROWSERS_PATH": "0"}
+    }
+  }
+}
+```
+
+---
+
+## 📁 Final File Structure
+
+```
+plugins/e2e-tests-web/
+├── .claude-plugin/
+│   └── plugin.json          ✅ Fixed: repository as string, paths to configs
+├── .mcp.json               ✅ New: MCP server configuration
+├── hooks/
+│   └── hooks.json          ✅ New: Hooks configuration
+├── scripts/
+│   ├── check-playwright.js
+│   └── setup-mcp-playwright.sh
+├── commands/
+├── docs/
+└── skills/
+```
+
+---
 
 According to [Claude Code Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference):
 
