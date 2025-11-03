@@ -12,14 +12,14 @@
     "plugins": [
         {
             "name": "e2e-tests-web",
-            "source": "./plugins/e2e-tests-web",
+            "source": "./plugins/venturo-e2e-web",
             "description": "QA Engineer Automation plugin for Playwright E2E testing with auto-scenario generation and validation",
             "version": "1.0.0",
             "author": {
                 "name": "Venturo",
                 "email": "dev@venturo.id"
             },
-            "homepage": "https://github.com/venturo-id/venturo-claude/tree/production/plugins/e2e-tests-web",
+            "homepage": "https://github.com/venturo-id/venturo-claude/tree/production/plugins/venturo-e2e-web",
             "repository": "https://github.com/venturo-id/venturo-claude",
             "license": "MIT",
             "keywords": [
