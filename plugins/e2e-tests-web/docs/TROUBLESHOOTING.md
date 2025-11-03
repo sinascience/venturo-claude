@@ -107,18 +107,29 @@ Changes:
 #### hooks/hooks.json
 ```json
 {
-  "PostInstall": [
-    {
-      "type": "command",
-      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/check-playwright.js"
-    },
-    {
-      "type": "command",
-      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/setup-mcp-playwright.sh"
-    }
-  ]
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/check-playwright.js"
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/setup-mcp-playwright.sh"
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
+
+**Note:** Changed from `PostInstall` to `SessionStart` because:
+- ❌ `PostInstall` is NOT a valid Claude Code hook event
+- ✅ `SessionStart` runs when Claude Code starts a new session
+- ✅ Valid hook events: PreToolUse, PostToolUse, SessionStart, SessionEnd, Stop, SubagentStop, UserPromptSubmit, Notification, PreCompact
 
 #### .mcp.json
 ```json

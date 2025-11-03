@@ -10,7 +10,9 @@ When team members install the `e2e-tests-web` plugin, the following automatic se
 /plugin install e2e-tests-web@venturo-tools
 ```
 
-### 2️⃣ Auto-Execution (PostInstall Hooks)
+### 2️⃣ Auto-Execution (SessionStart Hooks)
+
+When Claude Code starts a new session, the following hooks automatically run:
 
 #### Hook 1: Check Playwright Installation
 - **Script:** `scripts/check-playwright.js`
@@ -21,6 +23,8 @@ When team members install the `e2e-tests-web` plugin, the following automatic se
 - **Script:** `scripts/setup-mcp-playwright.sh`
 - **Purpose:** Configure Playwright MCP server
 - **Action:** Verifies npx access and MCP server availability
+
+**Note:** These hooks run at `SessionStart` (when Claude Code starts), not during plugin installation.
 
 ### 3️⃣ MCP Server Configuration
 
