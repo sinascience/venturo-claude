@@ -1,0 +1,21 @@
+{
+  "name": "playwright-e2e-automation",
+  "description": "QA Engineer Automation plugin for Playwright E2E testing with auto-scenario generation and validation",
+  "version": "1.0.0",
+  "author": {
+    "name": "Venturo",
+    "email": "dev@venturo.id"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/venturo-id/venturo-claude"
+  },
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "automation",
+    "qa"
+  ],
+  "license": "MIT"
+}

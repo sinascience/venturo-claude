@@ -1,0 +1,67 @@
+{
+    "name": "venturo-tools",
+    "owner": {
+        "name": "Venturo.id",
+        "email": "admin@venturo.id"
+    },
+    "metadata": {
+        "description": "Claude Code plugin marketplace by Venturo - Professional development tools and automation utilities",
+        "version": "1.0.0",
+        "pluginRoot": "./plugins"
+    },
+    "plugins": [
+        {
+            "name": "e2e-tests-web",
+            "source": "./plugins/e2e-tests-web",
+            "description": "QA Engineer Automation plugin for Playwright E2E testing with auto-scenario generation and validation",
+            "version": "1.0.0",
+            "author": {
+                "name": "Venturo",
+                "email": "dev@venturo.id"
+            },
+            "homepage": "https://github.com/venturo-id/venturo-claude/tree/production/plugins/e2e-tests-web",
+            "repository": "https://github.com/venturo-id/venturo-claude",
+            "license": "MIT",
+            "keywords": [
+                "playwright",
+                "e2e",
+                "testing",
+                "automation",
+                "qa",
+                "web-testing"
+            ],
+            "category": "testing",
+            "tags": [
+                "playwright",
+                "e2e",
+                "automation",
+                "qa-engineer",
+                "test-generation"
+            ],
+            "hooks": {
+                "PostInstall": [
+                    {
+                        "type": "command",
+                        "command": "${CLAUDE_PLUGIN_ROOT}/scripts/check-playwright.js"
+                    },
+                    {
+                        "type": "command",
+                        "command": "${CLAUDE_PLUGIN_ROOT}/scripts/setup-mcp-playwright.sh"
+                    }
+                ]
+            },
+            "mcpServers": {
+                "playwright": {
+                    "command": "npx",
+                    "args": [
+                        "-y",
+                        "@playwright/mcp-server"
+                    ],
+                    "env": {
+                        "PLAYWRIGHT_BROWSERS_PATH": "0"
+                    }
+                }
+            }
+        }
+    ]
+}
