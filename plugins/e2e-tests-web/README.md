@@ -7,7 +7,8 @@ Complete E2E testing solution for Claude Code with intelligent test generation a
 📖 **[Full Documentation](docs/README.md)**  
 🎭 **[QA Persona](agent-e2e.md)**  
 🔧 **[Scripts](scripts/)**  
-🌐 **[MCP Playwright Integration](docs/MCP_PLAYWRIGHT.md)**
+🌐 **[MCP Playwright Integration](docs/MCP_PLAYWRIGHT.md)**  
+🎬 **[Live E2E Testing Guide](docs/LIVE_E2E_TESTING.md)**
 
 ## Installation
 
@@ -19,8 +20,9 @@ Complete E2E testing solution for Claude Code with intelligent test generation a
 ## Commands
 
 - `/check_playwright` - Validate setup
-- `/run_e2e_tests` - Execute tests
+- `/run_e2e_tests` - Execute tests (headless)
 - `/generate_e2e_test` - Create new tests
+- `/live-e2e-test` - 🎬 Run tests with **visible browser** for live observation
 
 ## Features
 
@@ -30,7 +32,8 @@ Complete E2E testing solution for Claude Code with intelligent test generation a
 ✅ Auto-execution and validation  
 ✅ Smart selector detection  
 ✅ **MCP Playwright integration** - Browser automation via MCP  
-✅ **Auto-setup** - Playwright & MCP server configuration
+✅ **Auto-setup** - Playwright & MCP server configuration  
+✅ **🎬 Live E2E Testing** - Visible browser for real-time observation
 
 ## License
 
