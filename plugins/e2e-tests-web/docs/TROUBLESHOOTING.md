@@ -113,11 +113,11 @@ Changes:
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/check-playwright.js"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/check-playwright.js"
           },
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/setup-mcp-playwright.sh"
+            "command": "sh ${CLAUDE_PLUGIN_ROOT}/scripts/setup-mcp-playwright.sh"
           }
         ]
       }
@@ -130,6 +130,12 @@ Changes:
 - ❌ `PostInstall` is NOT a valid Claude Code hook event
 - ✅ `SessionStart` runs when Claude Code starts a new session
 - ✅ Valid hook events: PreToolUse, PostToolUse, SessionStart, SessionEnd, Stop, SubagentStop, UserPromptSubmit, Notification, PreCompact
+
+**Permission Best Practice:** Always use explicit interpreter:
+- ✅ `node script.js` - No execute permission needed
+- ✅ `sh script.sh` - No execute permission needed
+- ❌ `./script.js` - Requires execute permission (chmod +x)
+- ❌ Direct path execution - Permission issues in marketplace installs
 
 #### .mcp.json
 ```json
