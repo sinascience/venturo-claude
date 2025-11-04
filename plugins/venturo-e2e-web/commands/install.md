@@ -7,6 +7,10 @@ allowed-tools: Read, Write, Edit, Execute, Grep, Glob
 
 Command ini akan memverifikasi dan, bila perlu, menginstal Playwright Test, menambahkan/merapikan konfigurasi, serta memastikan browser terpasang untuk menjalankan E2E.
 
+# Agent
+
+Gunakan agent `agent-e2e-playwright-qa` untuk eksekusi command ini.
+
 ## Checklist
 - Dev dependency `@playwright/test` terpasang pada `package.json`.
 - File konfigurasi `playwright.config.ts` atau `playwright.config.js` tersedia dengan pengaturan minimum yang sesuai best practice.

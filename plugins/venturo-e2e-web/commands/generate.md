@@ -8,6 +8,10 @@ argument-hint: [mode] (manual|auto)
 
 Generate file test Playwright yang robust berdasarkan user flow atau skenario Gherkin, dengan opsi Page Object Model (POM) dan template siap pakai.
 
+# Agent
+
+Gunakan agent `agent-e2e-playwright-qa` untuk eksekusi command ini.
+
 ## Preconditions
 - Dev dependency `@playwright/test` ada di package.json dan browsers sudah terpasang.
 - Tersedia `playwright.config.ts/js` yang valid.

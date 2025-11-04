@@ -8,6 +8,10 @@ argument-hint: [urlAtauSpecPath] [--browser=chromium|firefox|webkit] [--slowmo=m
 
 Perintah ini menjalankan pengujian end-to-end secara langsung di browser dalam mode terlihat (headed) agar tim dapat mengamati alur interaksi UI secara real-time, dengan auto-wait dan validasi berbasis kondisi untuk meminimalkan flakiness saat demo.
 
+# Agent
+
+Gunakan agent `agent-e2e-playwright-qa` untuk eksekusi command ini.
+
 ## Preconditions
 
 - Dev dependency @playwright/test sudah terpasang pada project, dan browser binaries telah diinstall agar sesi live tidak gagal saat peluncuran.

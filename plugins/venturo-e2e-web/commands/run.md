@@ -7,6 +7,10 @@ allowed-tools: Read, Execute
 
 Jalankan Playwright tests dengan opsi terarah untuk lokal dan CI, dengan validasi dependency dan artifacts laporan.
 
+# Agent
+
+Gunakan agent `agent-e2e-playwright-qa` untuk eksekusi command ini.
+
 ## Preconditions
 
 - Dev dependency `@playwright/test` telah terpasang di package.json.
