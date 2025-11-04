@@ -6,6 +6,12 @@
     "name": "Venturo",
     "email": "dev@venturo.id"
   },
+  "commands": [
+    "./commands"
+  ],
+  "agents": [
+    "./agents/e2e-playwright-qa.md"
+  ],
   "repository": "https://github.com/venturo-id/venturo-claude",
   "keywords": [
     "playwright",
@@ -14,6 +20,5 @@
     "automation",
     "qa"
   ],
-  "license": "MIT",
   "mcpServers": "./.mcp.json"
 }
