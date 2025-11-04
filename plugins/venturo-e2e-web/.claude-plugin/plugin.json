@@ -10,7 +10,7 @@
     "./commands"
   ],
   "agents": [
-    "./agents/e2e-playwright-qa.md"
+    "./agents"
   ],
   "repository": "https://github.com/venturo-id/venturo-claude",
   "keywords": [
