@@ -9,9 +9,6 @@
   "commands": [
     "./commands"
   ],
-  "agents": [
-    "./agents"
-  ],
   "repository": "https://github.com/venturo-id/venturo-claude",
   "keywords": [
     "playwright",
