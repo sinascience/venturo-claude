@@ -1,6 +1,7 @@
 ---
-description: Run Playwright E2E tests dengan konfigurasi yang sesuai (lokal/CI), termasuk reporter, trace, dan opsi pemilihan suite
+description: Run Playwright E2E tests with appropriate configuration (local/CI), including reporters, traces, and suite selection options
 allowed-tools: Read, Execute
+argument-hint: [scope] (all|folder|file) [--project=browser] [--headed] [--reporter=type]
 ---
 
 # Run E2E Tests

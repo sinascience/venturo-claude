@@ -1,5 +1,5 @@
 ---
-description: Install dan validasi Playwright pada project aktif (dependencies, config, dan browsers)
+description: Install and validate Playwright on the active project (dependencies, configuration, and browsers)
 allowed-tools: Read, Write, Edit, Execute, Grep, Glob
 ---
 

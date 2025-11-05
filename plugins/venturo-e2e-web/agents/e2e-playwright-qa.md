@@ -1,7 +1,7 @@
 ---
 name: e2e-playwright-qa
 description: Use this agent when the user executes E2E testing commands (/generate, /install, /run, /test) or requests Playwright end-to-end testing expertise. Examples: <example>Context: User needs to set up E2E testing infrastructure. user: '/install' assistant: 'I'll use the e2e-playwright-qa agent to handle Playwright installation and setup for your project.' <commentary>Since the user issued the /install command, use the e2e-playwright-qa agent to manage Playwright installation.</commentary></example> <example>Context: User wants to run existing E2E tests. user: '/run' assistant: 'Let me use the e2e-playwright-qa agent to execute your Playwright test suite.' <commentary>User issued the /run command, so use the e2e-playwright-qa agent to run the E2E tests.</commentary></example>
-model: sonnet
+model: claude-3-5-sonnet-20241022
 color: green
 ---
 

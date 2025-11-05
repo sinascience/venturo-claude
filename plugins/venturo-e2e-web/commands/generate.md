@@ -1,5 +1,5 @@
 ---
-description: Generate Playwright E2E test cases berdasarkan user story atau flow, lengkap dengan struktur file dan best practices
+description: Generate Playwright E2E test cases based on user stories or flows with complete file structure and best practices
 allowed-tools: Read, Write, Edit, Grep, Glob, Execute
 argument-hint: [mode] (manual|auto)
 ---

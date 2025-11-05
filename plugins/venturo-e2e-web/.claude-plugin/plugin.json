@@ -6,10 +6,13 @@
     "name": "Venturo",
     "email": "dev@venturo.id"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/venturo-id/venturo-claude/tree/production/plugins/venturo-e2e-web",
+  "repository": "https://github.com/venturo-id/venturo-claude",
+  "bugs": "https://github.com/venturo-id/venturo-claude/issues",
   "commands": [
     "./commands"
   ],
-  "repository": "https://github.com/venturo-id/venturo-claude",
   "keywords": [
     "playwright",
     "e2e",

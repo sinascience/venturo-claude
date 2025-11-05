@@ -1,6 +1,6 @@
 ---
-description: Menjalankan live E2E test dengan browser terlihat (headed) untuk observasi real-time menggunakan MCP Playwright
-allowed-tools: mcp__playwright__*, Read, Write, Execute
+description: Run live E2E tests with visible browser (headed mode) for real-time observation using MCP Playwright
+allowed-tools: mcp__playwright, Read, Write, Execute
 argument-hint: [urlAtauSpecPath] [--browser=chromium|firefox|webkit] [--slowmo=ms] [--keepAlive=ms]
 ---
 
