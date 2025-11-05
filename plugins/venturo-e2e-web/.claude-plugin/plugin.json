@@ -1,24 +1,18 @@
 {
   "name": "venturo-e2e-web",
-  "description": "QA Engineer Automation plugin for Playwright E2E testing with auto-scenario generation and validation",
-  "version": "1.0.0",
-  "author": {
-    "name": "Venturo",
-    "email": "dev@venturo.id"
-  },
+  "version": "2.0.0",
+  "description": "Clean Playwright E2E testing automation with modular skills and specialized agents",
+  "author": "Venturo",
   "license": "MIT",
-  "homepage": "https://github.com/venturo-id/venturo-claude/tree/production/plugins/venturo-e2e-web",
-  "repository": "https://github.com/venturo-id/venturo-claude",
-  "bugs": "https://github.com/venturo-id/venturo-claude/issues",
   "commands": [
     "./commands"
   ],
-  "keywords": [
-    "playwright",
-    "e2e",
-    "testing",
-    "automation",
-    "qa"
+  "skills": [
+    "./skills"
   ],
-  "mcpServers": "./.mcp.json"
+  "agents": [
+    "./agents"
+  ],
+  "mcpServers": "./.mcp.json",
+  "keywords": ["playwright", "e2e", "testing", "automation", "qa"]
 }

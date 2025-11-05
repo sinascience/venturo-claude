@@ -1,99 +1,155 @@
 ---
-description: Run live E2E tests with visible browser (headed mode) for real-time observation using MCP Playwright
-allowed-tools: mcp__playwright, Read, Write, Execute
-argument-hint: [urlAtauSpecPath] [--browser=chromium|firefox|webkit] [--slowmo=ms] [--keepAlive=ms]
+description: Execute live E2E tests with visible browser for real-time observation and debugging
+agent: live-tester
+argument-hint: [url-or-spec] [browser-options]
 ---
 
-# Live E2E Test
+# Live Testing
 
-Perintah ini menjalankan pengujian end-to-end secara langsung di browser dalam mode terlihat (headed) agar tim dapat mengamati alur interaksi UI secara real-time, dengan auto-wait dan validasi berbasis kondisi untuk meminimalkan flakiness saat demo.
+Executes E2E tests in real-time with visible browser for observation, debugging, and interactive testing scenarios.
 
-# Agent
-
-Gunakan agent `agent-e2e-playwright-qa` untuk eksekusi command ini.
-
-## Preconditions
-
-- Dev dependency @playwright/test sudah terpasang pada project, dan browser binaries telah diinstall agar sesi live tidak gagal saat peluncuran.
-- File konfigurasi Playwright (playwright.config.ts/js) tersedia sehingga baseURL, projects, dan default use dapat dimanfaatkan bila diperlukan.
-
-Langkah verifikasi cepat (jalankan bila belum yakin):
-- Install dependency dan browser:  
-  - npm i -D @playwright/test@latest && npx playwright install --with-deps.
-- Cek CLI:  
-  - npx playwright --version.
-
-## Input yang dikumpulkan
-
-- Fitur atau halaman yang diuji, skenario langkah, expected outcome, dan base URL (atau gunakan baseURL dari config jika ada) untuk menyusun urutan tindakan dan asersi yang bermakna.
-- Jika diberikan path file test/spec, baca dan ringkas langkah-langkahnya untuk dijalankan atau ditransformasikan ke skenario live yang sepadan.
-
-## Strategi locator dan penantian
-
-- Prioritaskan getByRole/getByLabel/getByText agar interaksi lebih mirip pengguna dan stabil; gunakan getByTestId saat kontrak eksplisit tersedia dan diperlukan kestabilan ekstra.
-- Manfaatkan auto-wait Playwright dan tambahkan penantian berbasis kondisi seperti expect(page).toHaveURL(...) atau locator.waitFor({ state: 'visible' }) untuk mencegah jeda arbitrer dan flakiness saat demo.
-
-## Eksekusi live
-
-1) Luncurkan browser headed  
-- Browser default: chromium; dapat diubah via flag --browser=firefox|webkit sesuai kebutuhan demo lokal.  
-- Gunakan slowMo moderat (mis. 100–300 ms) hanya bila diperlukan untuk observasi, bukan default tinggi, agar sesi tetap responsif.
-
-Contoh peluncuran:
-```javascript
-// Dilakukan via MCP Playwright
-const browser = await playwright[browserName].launch({
-  headless: false,
-  slowMo: opts.slowmo ?? 150
-});
-const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
-const page = await context.newPage();
+## Usage
 ```
-Pengaturan viewport eksplisit menjaga konsistensi tampilan saat presentasi.
+/venturo-e2e-web:test [target] [options]
+```
 
-2) Jalankan langkah dengan narasi  
-- Umumkan tindakan, jalankan, tunggu kondisi relevan (URL, visibilitas elemen), ambil screenshot di momen penting, dan laporkan hasil singkat per langkah untuk transparansi.
-- Contoh pola langkah:
-  - Navigasi: mcp__playwright__navigate ke base URL, tunggu toHaveURL atau readiness;  
-  - Interaksi: getByRole/getByLabel untuk klik/isi, hindari CSS/XPath kecuali terpaksa;  
-  - Validasi: expect locator visible/hasText/URL sesuai hasil yang diharapkan.
+## Target Options
+- `url` - Test specific URL or application endpoint
+- `file` - Execute specific test file in live mode
+- `scenario` - Run custom testing scenario
+- `demo` - Execute demonstration workflow
 
-3) Kontrol sesi dan observasi  
-- Keep-alive pasca langkah terakhir (default 20–30 detik, atur dengan --keepAlive=ms) agar tim dapat mengamati hasil; berikan opsi “lanjut/selesai” tanpa menggantung sesi tanpa kontrol.
-- Tawarkan membuka inspector/UI mode terpisah jika diperlukan step-through granular di luar alur live MCP.
+## Browser Options
+- `--browser=chromium` - Use Chrome browser (default)
+- `--browser=firefox` - Use Firefox browser
+- `--browser=webkit` - Use Safari browser
+- `--device=desktop|mobile|tablet` - Simulate device type
+- `--viewport=WxH` - Custom viewport dimensions
+- `--slowmo=ms` - Slow execution for observation (default: 150ms)
 
-## Contoh alur naratif
+## Live Features
+- `--headed` - Run with visible browser (always on for live testing)
+- `--debug` - Enable browser DevTools
+- `--screenshots` - Capture screenshots at key steps
+- `--video` - Record session video
+- `--keep-alive=seconds` - Keep browser open after completion (default: 30s)
 
-- Langkah 1: Navigasi ke [https://example.com/login] dan tunggu halaman siap, lalu screenshot “step-1-login.png” untuk bukti awal kondisi halaman.
-- Langkah 2: Isi kredensial via getByLabel('Email') dan getByLabel('Password'), klik getByRole('button', { name: 'Login' }), validasi URL mengarah ke dashboard dan elemen sambutan terlihat, lalu ambil screenshot “step-2-post-login.png”.
-- Langkah 3: Jika elemen tidak ditemukan, alihkan strategi locator ke role/label/testId dan ulangi langkah dengan penantian kondisi yang tepat sebelum interaksi untuk menghindari race conditions.
+## Examples
+```bash
+/venturo-e2e-web:test https://example.com
+/venturo-e2e-web:test tests/login.spec.ts --browser=chromium
+/venturo-e2e-web:test demo --slowmo=300 --screenshots
+/venturo-e2e-web:test scenario --device=mobile --debug
+```
 
-## Validasi dan asersi
+## Live Testing Workflow
 
-- Gunakan asersi yang spesifik: toHaveURL(/dashboard/), toBeVisible(), toHaveText('...') untuk memastikan hasil nyata terlihat selama demo, bukan hanya tidak error.
-- Hindari waitForTimeout; gunakan penantian kondisi seperti waitForURL/waitForSelector atau expect-based waits agar deterministik.
+### 1. Browser Launch
+- Start visible browser with specified configuration
+- Set up viewport and device emulation
+- Configure debugging tools and observation options
+- Prepare testing environment
 
-## Artefak sesi
+### 2. Real-time Execution
+- Execute test steps with live narration
+- Capture screenshots and videos at key points
+- Monitor console logs and network activity
+- Provide step-by-step progress updates
 
-- Screenshot otomatis pada titik penting (masuk halaman, pasca submit, state sukses/error) memudahkan post-mortem singkat usai sesi live.
-- Opsional: aktifkan trace pada sesi pelengkap yang dijalankan via runner, lalu tampilkan dengan npx playwright show-trace untuk investigasi mendalam setelah demo.
+### 3. Interactive Features
+- Pause execution for manual inspection
+- Allow manual intervention and testing
+- Capture user interactions and feedback
+- Document findings with visual evidence
 
-## Pelaporan hasil
+### 4. Session Management
+- Control browser session duration
+- Keep browser open for exploration
+- Save session artifacts and recordings
+- Provide session summary and recommendations
 
-- Sajikan ringkasan berisi fitur, URL, durasi, daftar langkah beserta status, error ringkas pada kegagalan, dan daftar file screenshot yang dihasilkan untuk dokumentasi cepat tim.
-- Berikan rekomendasi tindak lanjut (mis. perbaiki selector, tambahkan data-testid, revisi alur) berdasarkan observasi pada langkah yang rentan atau lambat.
+## Testing Scenarios
 
-## Penanganan error
+### User Journey Testing
+- Complete end-to-end user workflows
+- Multi-step form processes
+- Shopping cart and checkout flows
+- Authentication and authorization scenarios
 
-- Pada kegagalan, ambil screenshot, catat URL saat ini, locator yang digunakan, dan pesan error; tawarkan: ulang langkah, ganti locator, atau aktifkan mode inspeksi untuk penelusuran manual.
-- Gunakan guard sebelum aksi (cek visibilitas/enablement) agar error tidak berantai dan sesi live tetap terkendali.
+### Interactive Debugging
+- Step-by-step test execution
+- Element inspection and validation
+- Network request monitoring
+- Performance analysis
 
-## Integrasi MCP Playwright
+### Responsive Testing
+- Mobile device simulation
+- Tablet layout testing
+- Desktop viewport testing
+- Orientation change testing
 
-- Prasyarat: server MCP Playwright aktif, @playwright/mcp-server terinstal, dan browser terpasang melalui npx playwright install agar API kontrol browser dapat digunakan.
-- Verifikasi cepat: npx @playwright/mcp-server --version untuk memastikan server tersedia sebelum memulai sesi live di proyek lokal.
+### Accessibility Testing
+- Screen reader compatibility
+- Keyboard navigation testing
+- Color contrast validation
+- Focus management testing
 
-## Tips lokal
+## Live Debugging Tools
 
-- UI Mode: gunakan npx playwright test --ui untuk eksplorasi tambahan di luar sesi live MCP, termasuk time-travel dan picker locator, saat perlu debugging detail.
-- Run cepat: npx playwright test --project=chromium --reporter=html dan npx playwright show-report untuk melihat laporan run terakhir saat membandingkan dengan hasil sesi live.
+### Browser Controls
+- Navigate to URLs and pages
+- Click elements and interact with forms
+- Scroll and zoom pages
+- Capture screenshots and recordings
+
+### Observation Features
+- Real-time console log monitoring
+- Network request tracking
+- Element state inspection
+- Performance metrics collection
+
+### Documentation Tools
+- Automatic screenshot capture
+- Session recording and playback
+- Finding documentation with evidence
+- Test summary and report generation
+
+## Output and Reporting
+
+### Session Summary
+- Testing scenario and objectives
+- Browser and device configuration
+- Step-by-step execution results
+- Issues identified and resolutions
+
+### Visual Evidence
+- Screenshots at key test points
+- Session video recordings
+- Element state documentation
+- Error captures with context
+
+### Recommendations
+- Identified bugs and issues
+- Performance optimization suggestions
+- User experience improvements
+- Testing strategy enhancements
+
+## Best Practices
+
+- Use descriptive step narration for clarity
+- Capture screenshots at important test points
+- Monitor console errors and network issues
+- Document findings with specific details
+- Provide actionable recommendations
+- Test across multiple devices and browsers
+- Validate both functional and non-functional requirements
+
+## Error Handling
+
+Provides comprehensive error support:
+- Screenshot capture on failures
+- Console error logging and analysis
+- Network failure investigation
+- Element not found troubleshooting
+- Performance issue identification
+- Step-by-step debugging guidance

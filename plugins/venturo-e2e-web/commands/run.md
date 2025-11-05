@@ -1,78 +1,108 @@
 ---
-description: Run Playwright E2E tests with appropriate configuration (local/CI), including reporters, traces, and suite selection options
-allowed-tools: Read, Execute
-argument-hint: [scope] (all|folder|file) [--project=browser] [--headed] [--reporter=type]
+description: Execute Playwright test suites with comprehensive reporting and result analysis
+agent: runner
+argument-hint: [scope] [options]
 ---
 
-# Run E2E Tests
+# Test Execution
 
-Jalankan Playwright tests dengan opsi terarah untuk lokal dan CI, dengan validasi dependency dan artifacts laporan.
+Executes Playwright test suites with proper configuration, comprehensive reporting, and detailed result analysis.
 
-# Agent
+## Usage
+```
+/venturo-e2e-web:run [scope] [options]
+```
 
-Gunakan agent `agent-e2e-playwright-qa` untuk eksekusi command ini.
+## Scope Options
+- `all` - Run all tests in the project
+- `folder` - Run tests in specific folder
+- `file` - Run specific test file
+- `grep` - Run tests matching pattern
 
-## Preconditions
+## Browser Options
+- `--project=chromium` - Run on Chrome browser
+- `--project=firefox` - Run on Firefox browser
+- `--project=webkit` - Run on Safari browser
+- `--all-browsers` - Run on all configured browsers
 
-- Dev dependency `@playwright/test` telah terpasang di package.json.
-- File `playwright.config.ts/js` tersedia dan valid.
-- Browser binaries telah terpasang (lihat langkah 1).
+## Execution Modes
+- `--headed` - Run with visible browser for debugging
+- `--debug` - Run with Playwright Inspector
+- `--ui` - Run in interactive UI mode
+- `--workers=N` - Specify number of parallel workers
 
-## Instructions
+## Reporting Options
+- `--reporter=html` - Generate HTML report (default)
+- `--reporter=junit` - Generate JUnit XML for CI
+- `--reporter=line` - Simple line-by-line output
+- `--reporter=list` - Detailed test list output
 
-1. Validasi instalasi
-   - Periksa `@playwright/test` di package.json. Jika tidak ada, sarankan install.
+## Examples
+```bash
+/venturo-e2e-web:run all
+/venturo-e2e-web:run tests/auth/
+/venturo-e2e-web:run tests/login.spec.ts --project=chromium
+/venturo-e2e-web:run all --reporter=junit --workers=4
+/venturo-e2e-web:run all --headed --debug
+```
 
-2. Tanyakan preferensi user
-   - Scope: semua tests, folder, atau file spesifik
-   - Project/browser: chromium | firefox | webkit (atau gunakan projects dari config)
-   - Mode: headless (default) atau headed
-   - Reporter: html (default), junit (CI), line/list
-   - Debug: --debug / --ui
-   - Filter: by title (`-g "title"`), by tag (`-g "@critical"` bila pakai konvensi tag di title)
+## Execution Workflow
 
-3. Preset eksekusi `npx playwright test --project=chromium --reporter=html`
+1. **Environment Validation**
+   - Check Playwright installation
+   - Verify browser availability
+   - Validate configuration files
+   - Check test data readiness
 
-4. Contoh perintah umum:
-    ```
-    Semua tests (default headless)
-    `npx playwright test`
+2. **Test Execution**
+   - Run tests with specified parameters
+   - Monitor progress and capture results
+   - Handle failures and retries appropriately
+   - Collect performance metrics
 
-    File spesifik
-    `npx playwright test tests/e2e/login.spec.ts`
+3. **Result Processing**
+   - Generate comprehensive test reports
+   - Analyze failure patterns and root causes
+   - Create execution summaries and statistics
+   - Provide actionable insights
 
-    Satu project/browser
-    `npx playwright test --project=chromium`
+4. **Report Generation**
+   - HTML reports with detailed results
+   - Performance metrics and timing analysis
+   - Failure analysis with debugging information
+   - Trend analysis and recommendations
 
-    Headed (debug visual)
-    `npx playwright test --headed`
+## Report Features
 
-    UI mode (explorasi & rerun cepat)
-    `npx playwright test --ui`
+### Test Summary
+- Total tests executed
+- Pass/fail statistics
+- Execution time metrics
+- Browser and environment details
 
-    Filter nama test
-    `npx playwright test -g "login"`
+### Failure Analysis
+- Detailed failure descriptions
+- Screenshots and error logs
+- Stack traces and debugging info
+- Common failure patterns
 
-    Banyak workers (percepat run lokal)
-    `npx playwright test --workers=4`
-    ```
+### Performance Metrics
+- Test execution times
+- Browser performance data
+- Network request analysis
+- Resource utilization
 
-5. Jika test gagal, tawarkan:
-   - Jalankan ulang satu spec dengan `--debug`:
-     ```
-     npx playwright test tests/e2e/login.spec.ts --debug
-     ```
-   - Headed mode untuk observasi visual:
-     ```
-     npx playwright test tests/e2e/login.spec.ts --headed
-     ```
-   - Buka trace/HTML report untuk analisis.
+## Debugging Support
 
-## Options Quick Reference
-- `--headed`: Menjalankan dengan browser terlihat (untuk debug).
-- `--project=<browser>`: chromium | firefox | webkit.
-- `--debug`: Inspector + pause otomatis.
-- `--ui`: UI mode interaktif.
-- `--reporter=html|junit|list|line`: Pilih reporter; bisa multiple di CI.
-- `-g "<pattern>"`: Filter test berdasarkan title.
-- `--workers=<n>`: Kontrol paralelisme (default optimal, sesuaikan resource).
+When tests fail, provides:
+- Specific failure reproduction steps
+- Debugging command suggestions
+- Screenshot and trace file locations
+- Performance bottleneck identification
+
+## Output
+Returns comprehensive test results including:
+- Execution summary and statistics
+- Failed test details and debugging info
+- Performance analysis and recommendations
+- Report file locations and access instructions
