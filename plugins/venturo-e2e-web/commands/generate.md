@@ -20,7 +20,7 @@ Generates comprehensive E2E test cases using Playwright from user stories, requi
 
 ## Options
 - `--source=path` - Specify source directory or file to analyze
-- `--pattern=pom|inline` - Choose test pattern (Page Object Model or inline)
+- `--pattern=inline` - Choose test pattern (inline utilities for self-contained tests)
 - `--browser=chromium|firefox|webkit` - Target browser for tests
 - `--device=desktop|mobile|tablet` - Target device type
 
@@ -28,7 +28,7 @@ Generates comprehensive E2E test cases using Playwright from user stories, requi
 1. Analyzes user stories or application structure
 2. Identifies test scenarios and user journeys
 3. Generates structured test files with best practices
-4. Creates page objects and test utilities
+4. Creates self-contained test files with inline utilities
 5. Implements proper selectors and assertions
 6. Validates generated tests for syntax and structure
 
@@ -52,7 +52,7 @@ Generates comprehensive E2E test cases using Playwright from user stories, requi
 1. Analyze application structure and components
 2. Identify user flows and interactions
 3. Generate comprehensive test coverage
-4. Create page objects and utilities
+4. Create self-contained test files with inline utilities
 5. Provide test execution guidance
 
 ### Story Mode
@@ -60,7 +60,7 @@ Generates comprehensive E2E test cases using Playwright from user stories, requi
 2. Extract acceptance criteria
 3. Map requirements to test cases
 4. Generate behavior-driven tests
-5. Include test data and fixtures
+5. Include test data through environment variables
 
 ## Output Structure
 ```
@@ -69,29 +69,23 @@ tests/
 │   ├── {feature-name}/
 │   │   ├── {scenario-name}.spec.ts
 │   │   └── {scenario-name}.spec.ts
-├── pages/
-│   ├── {PageName}.ts
-│   └── {PageName}.ts
-├── helpers/
-│   ├── {helper-name}.ts
-│   └── {helper-name}.ts
-└── fixtures/
-    ├── {fixture-name}.ts
-    └── {fixture-name}.ts
+└── config/
+    ├── .env
+    └── .env.example
 ```
 
 ## Best Practices Applied
 - Uses data-testid selectors for stability
 - Implements proper wait strategies
 - Includes comprehensive assertions
-- Follows Page Object Model when appropriate
-- Handles test data management
+- Uses inline utilities for self-contained tests
+- Handles test data through environment variables
 - Provides clear test documentation
 
 ## Next Steps
 After generation:
 - Review generated tests for completeness
 - Run tests to validate functionality
-- Customize test data and scenarios
+- Customize environment variables and test scenarios
 - Integrate with CI/CD pipeline
 - Maintain and update tests regularly

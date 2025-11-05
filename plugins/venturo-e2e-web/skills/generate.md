@@ -154,8 +154,8 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 
 4. **Test Pattern Application**
    - [ ] Apply Page Object Model patterns
-   - [ ] Implement data-driven test patterns
-   - [ ] Use fixture-based test patterns
+   - [ ] Implement data-driven test patterns using environment variables
+   - [ ] Use environment variable-based test patterns
    - [ ] Apply assertion library patterns
 
 ### Test File Generation SOP
@@ -430,7 +430,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 ### 3. Test Case Generation
 - Create Playwright test files with proper structure
 - Generate page objects and test utilities
-- Implement test data fixtures and helpers
+- Implement test data management through environment variables
 - Create maintainable test patterns
 
 ### 4. Best Practices Integration

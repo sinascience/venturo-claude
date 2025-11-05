@@ -153,7 +153,7 @@ venturo-e2e-web/
 - Implement proper wait strategies
 - Include comprehensive assertions
 - Follow Page Object Model when appropriate
-- Handle test data management
+- Handle test data through environment variables
 - Provide clear test documentation
 
 ## Requirements

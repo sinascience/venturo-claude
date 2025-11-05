@@ -100,15 +100,15 @@ Standardize Playwright installation process to ensure consistent, reliable setup
 
 3. **Directory Structure Setup**
    - [ ] Create tests/ directory
-   - [ ] Set up test-data/ fixtures directory
+   - [ ] Set up environment configuration files (tests/.env, tests/.env.example)
    - [ ] Create test-results/ output directory
-   - [ ] Configure .gitignore for test artifacts
+   - [ ] Configure .gitignore for test artifacts and environment files
 
 4. **Sample Test Creation**
    - [ ] Generate basic example test
    - [ ] Create page object templates
    - [ ] Set up helper functions
-   - [ ] Initialize test data fixtures
+   - [ ] Initialize environment variable configuration templates
 
 ### Browser Installation SOP
 

@@ -30,7 +30,7 @@ Standardize test execution process to ensure reliable, consistent test runs with
    - [ ] Check Playwright installation version
    - [ ] Verify browser availability (chromium, firefox, webkit)
    - [ ] Validate configuration file syntax (playwright.config.ts/js)
-   - [ ] Check test data and fixtures availability
+   - [ ] Check environment variable configuration availability
 
 2. **Environment Configuration**
    - [ ] Set BASE_URL environment variable
@@ -41,7 +41,7 @@ Standardize test execution process to ensure reliable, consistent test runs with
 3. **Dependency Validation**
    - [ ] Verify test file accessibility
    - [ ] Check page object and helper files
-   - [ ] Validate fixture data availability
+   - [ ] Validate environment variable configuration
    - [ ] Confirm mock API configurations
 
 4. **Security & Permissions**
@@ -340,7 +340,7 @@ Standardize test execution process to ensure reliable, consistent test runs with
 
 ### 4. Environment Management
 - Configure test environments (dev/staging/prod)
-- Manage test data and fixtures
+- Manage test data through environment variables
 - Handle environment-specific configurations
 - Set up test isolation and cleanup
 
@@ -348,7 +348,7 @@ Standardize test execution process to ensure reliable, consistent test runs with
 
 1. **Preparation**
    - Validate test environment
-   - Check test data availability
+   - Check environment variable configuration
    - Verify browser configurations
    - Set up execution parameters
 
@@ -365,7 +365,7 @@ Standardize test execution process to ensure reliable, consistent test runs with
    - Create performance summaries
 
 4. **Cleanup**
-   - Clean up test data and temporary files
+   - Clean up temporary files and reset environment variables
    - Reset test environments
    - Archive test results
    - Update test status tracking

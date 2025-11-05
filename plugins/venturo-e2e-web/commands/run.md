@@ -52,7 +52,7 @@ Executes Playwright test suites with proper configuration, comprehensive reporti
    - Check Playwright installation
    - Verify browser availability
    - Validate configuration files
-   - Check test data readiness
+   - Check environment variable configuration
 
 2. **Test Execution**
    - Run tests with specified parameters
