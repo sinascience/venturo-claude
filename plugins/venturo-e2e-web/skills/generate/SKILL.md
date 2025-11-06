@@ -706,6 +706,58 @@ Saya telah membuat rencana tes otomatis untuk skenario Anda di atas. Rencana ini
 Silakan berikan persetujuan Anda untuk melanjutkan. 🚀
 ```
 
+## CRITICAL FILE GENERATION RULES
+
+### ❌ PROHIBITED: Never Generate Separate Files
+- **NEVER** create `fixtures.ts` files
+- **NEVER** create `helpers.ts` files
+- **NEVER** create `utils.ts` files
+- **NEVER** create separate `setup.ts` or `teardown.ts` files
+- **NEVER** create separate `data.ts` or `constants.ts` files
+- **NEVER** create separate `locators.ts` or `selectors.ts` files
+
+### ✅ REQUIRED: Always Inline All Utilities
+- **ALWAYS** define all utilities INLINE in the `.spec.ts` file
+- **ALWAYS** keep 1 scenario = 1 test file rule
+- **ALWAYS** include all helper functions within test file
+- **ALWAYS** define all test data inline or via environment variables
+- **ALWAYS** include all locators/selectors in test file
+
+### File Output Example
+```typescript
+// ✅ CORRECT: Single self-contained file
+tests/feature-name/scenario.spec.ts
+
+// ❌ WRONG: Multiple files
+tests/feature-name/scenario.spec.ts
+tests/feature-name/fixtures.ts      ← NEVER
+tests/feature-name/helpers.ts       ← NEVER
+tests/feature-name/locators.ts      ← NEVER
+```
+
+### Inline Structure Required
+```typescript
+// tests/feature-name/scenario.spec.ts
+import { test, expect } from '@playwright/test';
+
+// Inline constants and test data
+const TEST_DATA = {
+  email: process.env.TEST_USER_EMAIL || 'test@example.com',
+  password: process.env.TEST_USER_PASSWORD || 'password123'
+};
+
+// Inline helper functions
+const getLoginButton = (page) => page.getByTestId('login-button');
+const fillEmail = async (page, email) => {
+  await page.getByTestId('email-input').fill(email);
+};
+
+// Test cases
+test.describe.serial('Login Feature', () => {
+  // All tests inline here
+});
+```
+
 ## Implementation Notes
 
 ### Automated Plan Generation Process:

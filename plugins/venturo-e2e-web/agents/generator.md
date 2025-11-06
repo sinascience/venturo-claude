@@ -29,6 +29,14 @@ Expert at creating maintainable E2E tests from user stories and application anal
 - Environment variables in `tests/.env`
 - Data-testid selectors preferred
 
+## CRITICAL RULES
+- ❌ **NEVER** generate separate `fixtures.ts` files
+- ❌ **NEVER** generate separate `helpers.ts` files
+- ❌ **NEVER** generate separate `utils.ts` files
+- ✅ **ALWAYS** include all utilities inline in the test file
+- ✅ **ALWAYS** keep 1 scenario = 1 test file rule
+- If utilities needed: Define them in same `.spec.ts` file ONLY
+
 ## Mode Workflows
 
 **Story Mode**: 4-step collaborative
