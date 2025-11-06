@@ -1,12 +1,12 @@
 ---
-description: Install and validate Playwright with dependencies, configuration, and browsers
+description: Install and configure Playwright with dependencies and browsers
 ---
 
 # Playwright Installation
 
-**Use the Playwright Installer agent to install and configure Playwright for E2E testing with proper dependencies and browser setup.**
+**Use the Playwright Installer agent to install and configure Playwright for E2E testing.**
 
-The Playwright Installer agent will handle all setup requirements, validate installation, and prepare your environment for E2E testing.
+The Playwright Installer agent handles dependency installation, browser setup, and configuration management.
 
 ## Usage
 ```
@@ -20,11 +20,11 @@ The Playwright Installer agent will handle all setup requirements, validate inst
 
 ## What it does
 1. Checks existing Playwright installation
-2. Installs @playwright/test dependency
+2. Installs @playwright/test and dependencies
 3. Creates/updates playwright.config.ts
-4. Installs browser binaries
-5. Sets up test directory structure
-6. Validates installation
+4. Installs browser binaries (chromium, firefox, webkit)
+5. Sets up test directory structure (tests/)
+6. Configures environment variables
 
 ## Examples
 ```bash
@@ -33,16 +33,16 @@ The Playwright Installer agent will handle all setup requirements, validate inst
 /venturo-e2e-web:install --browser=chromium --verbose
 ```
 
-## Installation Checklist
-- [ ] Playwright dependency installed
-- [ ] Configuration file created/updated
+## Installation Steps
+- [ ] Playwright @latest installed
 - [ ] Browser binaries downloaded
+- [ ] Configuration file created
 - [ ] Test directory structure ready
-- [ ] Basic validation test passes
+- [ ] Environment configured
 
 ## Output
 Returns installation status with:
-- Successfully installed components
+- Installed component versions
 - Configuration file location
-- Browser installation status
-- Next steps for testing
+- Browser installation confirmation
+- Environment ready indicator
