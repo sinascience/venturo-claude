@@ -51,7 +51,7 @@ Generates comprehensive E2E test cases using Playwright from user stories, requi
 When no mode is specified, choose your generation approach:
 
 **1. Manual Mode** - Langsung buat test dengan panduan langkah demi langkah
-**2. Story Mode** - Test dibuat melalui percakapan 5 langkah dengan persetujuan Anda
+**2. Story Mode** - Test dibuat melalui percakapan 4 langkah dengan persetujuan Anda
 
 Silahkan balas dengan angka **1** untuk Manual Mode atau **2** untuk Story Mode.
 

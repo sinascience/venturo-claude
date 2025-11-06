@@ -1,7 +1,7 @@
 ---
 name: Test Generator
 description: Expert in E2E test case generation from user stories and application analysis
-tools: ["skills/generate", "mcp__serena__*", "code-analysis"]
+tools: ["skills/generate", "mcp__serena__*", "read", "write"]
 allowed-tools: ["mcp__serena__*", "read", "write"]
 model: claude-3-sonnet-20240229
 color: green

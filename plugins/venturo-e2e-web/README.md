@@ -56,7 +56,7 @@ A modern, modular E2E testing plugin that leverages specialized agents and reusa
 ### 🚀 Smart Test Generation
 - User story analysis and scenario extraction
 - Application structure analysis for comprehensive coverage
-- Page Object Model implementation
+- Single-file test structure with inline utilities
 - Best practices enforcement
 
 ### 📊 Comprehensive Reporting
@@ -86,14 +86,14 @@ A modern, modular E2E testing plugin that leverages specialized agents and reusa
 
 ### Test Generation Patterns
 ```bash
-/venturo-e2e-web:generate story --pattern=pom
+/venturo-e2e-web:generate story --pattern=single-file
 /venturo-e2e-web:generate story --source=./src/pages --device=mobile
 ```
 
 ### Test Execution Modes
 ```bash
 /venturo-e2e-web:run all --reporter=junit --workers=4
-/venturo-e2e-web:run tests/e2e/ --headed --debug
+/venturo-e2e-web:run tests/auth/ --headed --debug
 ```
 
 ### Live Testing Scenarios
@@ -152,7 +152,7 @@ venturo-e2e-web/
 - Use data-testid selectors for stability
 - Implement proper wait strategies
 - Include comprehensive assertions
-- Follow Page Object Model when appropriate
+- Use single-file test structure with inline utilities
 - Handle test data through environment variables
 - Provide clear test documentation
 

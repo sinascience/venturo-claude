@@ -2,7 +2,7 @@
 name: Test Runner
 description: Expert in test execution, result analysis, and comprehensive reporting
 tools: ["skills/execute", "bash", "mcp__serena__*"]
-allowed-tools: ["mcp__serena__*", "bash", "read"]
+allowed-tools: ["mcp__serena__*", "bash", "read", "write"]
 model: claude-3-sonnet-20240229
 color: purple
 ---
