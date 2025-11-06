@@ -22,182 +22,117 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 
 ### Generation Modes SOP
 
-#### SOP-G001: Manual Mode Generation
-**Purpose**: Generate tests from user-provided scenarios with interactive guidance
+#### SOP-G001: Interactive Story Mode Generation
+**Purpose**: Generate tests through conversational 5-step workflow with user collaboration and explicit confirmations
 
 **Procedure**:
-1. **Path Input Validation**
-   - [ ] Verify feature path exists and is valid
-   - [ ] Check path structure follows `/src/features/{feature-name}/` pattern
-   - [ ] Validate accessibility of source files
+1. **Scenario Discovery**
+   - [ ] **MANDATORY**: Ask user "What scenario would you like to test?"
+   - [ ] Provide guidance on what makes a good test scenario
+   - [ ] Offer examples of common testing scenarios
+   - [ ] Help user articulate their testing needs clearly
 
-2. **Scenario Input Collection**
-   - [ ] Collect user story in Gherkin format
-   - [ ] Extract Given/When/Then steps
-   - [ ] Validate scenario completeness and clarity
+2. **Scenario Description Collection**
+   - [ ] **MANDATORY**: Collect detailed scenario description from user
+   - [ ] Ask clarifying questions about user flows, expected behaviors, edge cases
+   - [ ] Document acceptance criteria and success conditions
+   - [ ] Identify key user interactions and system responses
 
-3. **Additional Information Gathering**
-   - [ ] Collect mock API requirements
-   - [ ] Gather authentication specifications
-   - [ ] Document test data requirements
-   - [ ] Record environment variable needs
+3. **Test Plan Creation**
+   - [ ] **MANDATORY**: Structure user input into actionable test plan
+   - [ ] Identify primary test scenarios and edge cases
+   - [ ] Suggest appropriate test patterns and approaches
+   - [ ] Define test scope and expected deliverables
 
-4. **Progress Tracking**
-   ```
-   Progress: [✔] Path | [✔] Scenario | [⏳] Additional Info
-   ```
+4. **Plan Confirmation**
+   - [ ] **MANDATORY**: Present test plan to user for review and approval
+   - [ ] Explain test scenarios and coverage approach
+   - [ ] Allow user to modify or refine the plan
+   - [ ] Obtain explicit user confirmation before proceeding
 
-#### SOP-G002: Auto Scenario Mode Generation
-**Purpose**: Generate test scenarios automatically through codebase analysis
+5. **Test Generation Execution**
+   - [ ] **MANDATORY**: Generate tests based on approved plan only
+   - [ ] Create self-contained test files with inline utilities
+   - [ ] Implement environment variable management
+   - [ ] Ensure all quality standards and mandatory requirements
 
-**Procedure**:
-1. **Feature Path Validation**
-   - [ ] Verify feature path exists
-   - [ ] Analyze component structure and relationships
-   - [ ] Identify relevant APIs and state management
-
-2. **Focus Area Specification**
-   - [ ] Collect user focus description
-   - [ ] Identify specific behaviors to test
-   - [ ] Limit scope to prevent over-generation
-
-3. **Automated Analysis**
-   - [ ] Scan components for interactive elements
-   - [ ] Map API calls and data flows
-   - [ ] Identify user interaction patterns
-   - [ ] Generate scenario with `[AUTO-GENERATED SCENARIO]` tag
-
-4. **User Confirmation**
-   - [ ] Present generated scenario for review
-   - [ ] Obtain user approval before proceeding
-   - [ ] Allow scenario modifications if needed
 
 ### Code Analysis SOP
 
-#### SOP-G003: Codebase Analysis Methodology
-**Purpose**: Systematic analysis of application structure for comprehensive test coverage
+#### SOP-G002: Exploratory Codebase Analysis
+**Purpose**: Flexible analysis approach to support interactive story mode conversations
 
 **Procedure**:
-1. **Structure Verification**
-   - [ ] Validate file structure exists
-   - [ ] Identify selector availability and hierarchy
-   - [ ] Check for existing test patterns
+1. **Scenario-Based Analysis**
+   - [ ] **MANDATORY**: Analyze code based on user's described scenario
+   - [ ] Focus on components relevant to user's testing needs
+   - [ ] Identify interactive elements mentioned in scenario
+   - [ ] Map user flows described in the scenario
 
-2. **Selector Prioritization Analysis**
-   - [ ] Search for `data-testid` attributes (Priority 1)
-   - [ ] Identify `role` attributes (Priority 2)
-   - [ ] Locate `aria-label` attributes (Priority 3)
-   - [ ] Find text content selectors (Priority 4)
-   - [ ] Use CSS selectors as last resort (Priority 5)
+2. **Contextual Selector Discovery**
+   - [ ] Search for `data-testid` attributes in relevant components (Priority 1)
+   - [ ] Identify `role` attributes for accessibility-based testing (Priority 2)
+   - [ ] Locate `aria-label` attributes for semantic testing (Priority 3)
+   - [ ] Find text content selectors when needed (Priority 4)
+   - [ ] Use CSS selectors as fallback for specific elements (Priority 5)
 
-3. **API and State Management Analysis**
-   - [ ] Identify API endpoints and methods
-   - [ ] Map state management patterns
-   - [ ] Document data flow and dependencies
-   - [ ] Identify mocking requirements
+3. **Targeted API and State Analysis**
+   - [ ] Identify API endpoints relevant to user's scenario
+   - [ ] Map state management for described user flows
+   - [ ] Document data dependencies mentioned in scenario
+   - [ ] Identify mocking requirements for user's test case
 
-4. **Component Interaction Mapping**
-   - [ ] Map user interaction flows
-   - [ ] Identify form validation patterns
-   - [ ] Document navigation and routing
-   - [ ] Analyze error handling patterns
+4. **Interactive Pattern Mapping**
+   - [ ] Map user interactions described in scenario
+   - [ ] Identify form validation patterns for user flows
+   - [ ] Document navigation paths mentioned by user
+   - [ ] Analyze error handling relevant to scenario
 
-#### SOP-G009: Advanced Code Analysis Techniques
-**Purpose**: Apply sophisticated analysis methods for comprehensive test coverage
 
-**Procedure**:
-1. **Static Code Analysis**
-   - [ ] Scan source code for component patterns
-   - [ ] Analyze function signatures and parameters
-   - [ ] Identify event handlers and callbacks
-   - [ ] Map data transformation logic
-
-2. **Dynamic Pattern Recognition**
-   - [ ] Identify common UI interaction patterns
-   - [ ] Detect form validation schemas
-   - [ ] Map authentication and authorization flows
-   - [ ] Analyze state change triggers
-
-3. **Dependency Graph Analysis**
-   - [ ] Map component dependency relationships
-   - [ ] Identify shared utilities and helpers
-   - [ ] Analyze service layer interactions
-   - [ ] Document API integration points
-
-4. **Test Coverage Gap Analysis**
-   - [ ] Compare existing tests with application features
-   - [ ] Identify untested code paths
-   - [ ] Detect missing edge case scenarios
-   - [ ] Prioritize test generation based on risk
-
-#### SOP-G010: Pattern-Based Test Generation
-**Purpose**: Generate tests based on recognized application patterns
-
-**Procedure**:
-1. **Design Pattern Recognition**
-   - [ ] Identify MVC/MVVM patterns
-   - [ ] Detect component composition patterns
-   - [ ] Recognize state management patterns (Redux, Context, etc.)
-   - [ ] Map service/repository patterns
-
-2. **User Flow Pattern Analysis**
-   - [ ] Identify CRUD operation patterns
-   - [ ] Detect search and filter patterns
-   - [ ] Map authentication/authorization flows
-   - [ ] Analyze form submission workflows
-
-3. **Error Handling Pattern Detection**
-   - [ ] Map error boundary implementations
-   - [ ] Identify validation error patterns
-   - [ ] Analyze network error handling
-   - [ ] Document user feedback mechanisms
-
-4. **Test Pattern Application**
-   - [ ] Apply Page Object Model patterns
-   - [ ] Implement data-driven test patterns using environment variables
-   - [ ] Use environment variable-based test patterns
-   - [ ] Apply assertion library patterns
 
 ### Test File Generation SOP
 
-#### SOP-G004: Playwright Test File Standards
-**Purpose**: Ensure consistent, maintainable test file structure
+#### SOP-G003: Interactive Test File Standards
+**Purpose**: Generate consistent test files based on user-approved scenarios
 
 **Procedure**:
 1. **File Structure Standards**
    ```
-   tests/features/{feature-name}/{action}-{entity}.spec.ts
+   tests/features/{feature-name}/{scenario-name}.spec.ts
    tests/.env                              # Environment configuration
    tests/.env.example                      # Environment template
    ```
 
-2. **Template Application**
-   - [ ] Use sequential execution: `test.describe.serial()`
+2. **Scenario-Based Template Application**
+   - [ ] **MANDATORY**: Use sequential execution: `test.describe.serial()`
    - [ ] Configure browser for headed mode when debugging
    - [ ] Implement automatic screenshot on failure
-   - [ ] Include comprehensive file header documentation
+   - [ ] Include scenario-based file header documentation
+   - [ ] Structure tests according to user-approved plan
 
-3. **Code Generation Standards**
+3. **Context-Aware Code Generation**
    - [ ] Generate TypeScript files with proper typing
-   - [ ] Include proper imports and setup
+   - [ ] Include imports and setup for user's scenario
    - [ ] Use BASE_URL environment variable from tests/.env
-   - [ ] Configure browser launch options
+   - [ ] Configure browser options based on scenario requirements
 
-4. **Environment Integration**
-   - [ ] Generate tests that read from process.env
+4. **Interactive Environment Integration**
+   - [ ] **MANDATORY**: Generate tests that read from process.env
    - [ ] Include environment variable validation
    - [ ] Support multiple environments (dev/staging/prod)
    - [ ] Implement fallback for missing variables
+   - [ ] Align environment setup with user's testing context
 
-5. **Selector Implementation**
-   - [ ] Prioritize `data-testid` selectors
-   - [ ] Use semantic HTML selectors
-   - [ ] Avoid fragile CSS selectors
-   - [ ] Include fallback selector strategies
+5. **Scenario-Driven Selector Implementation**
+   - [ ] **MANDATORY**: Prioritize `data-testid` selectors from analysis
+   - [ ] Use semantic HTML selectors for user interactions
+   - [ ] Avoid fragile CSS selectors when possible
+   - [ ] Include fallback selector strategies for user's scenario
+   - [ ] Ensure selectors match user-described elements
 
 ### Configuration Management SOP
 
-#### SOP-G013: Environment File Management (MANDATORY)
+#### SOP-G004: Environment File Management (MANDATORY)
 **Purpose**: Standardize management of environment variables and configuration files to ensure secure, consistent, and maintainable test execution across different environments
 
 **Procedure**:
@@ -229,7 +164,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
    ENVIRONMENT=development                    # Current environment
    ```
 
-#### SOP-G014: Configuration Externalization (MANDATORY)
+#### SOP-G005: Configuration Externalization (MANDATORY)
 **Purpose**: Implement systematic externalization of test configurations to enable flexible, maintainable, and environment-agnostic test execution
 
 **Procedure**:
@@ -266,7 +201,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
    - [ ] Implement configuration error handling
    - [ ] Provide configuration documentation
 
-#### SOP-G015: Server-Ready Test Generation (MANDATORY)
+#### SOP-G006: Server-Ready Test Generation (MANDATORY)
 **Purpose**: Ensure generated tests are fully prepared for server deployment with proper configuration, authentication, and resource management
 
 **Procedure**:
@@ -313,7 +248,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 
 ### Quality Assurance SOP
 
-#### SOP-G005: Test Quality Validation
+#### SOP-G007: Test Quality Validation
 **Purpose**: Ensure generated tests meet quality standards and best practices
 
 **Procedure**:
@@ -352,7 +287,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 
 ### Error Handling SOP
 
-#### SOP-G006: Generation Error Management
+#### SOP-G008: Generation Error Management
 **Purpose**: Handle errors during test generation process
 
 **Procedure**:
@@ -376,26 +311,10 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
    - [ ] Provide improvement recommendations
    - [ ] Allow iterative refinement
 
-### Performance Metrics SOP
-
-#### SOP-G007: Generation Performance Monitoring
-**Purpose**: Monitor and optimize test generation performance
-
-**Metrics**:
-- Generation time per test case
-- Code quality scores
-- Selector stability ratings
-- User satisfaction feedback
-
-**Targets**:
-- Generation time: < 30 seconds per test case
-- Code quality: > 90% compliance
-- Selector stability: > 95% reliable
-- User satisfaction: > 4.5/5 rating
 
 ### Integration SOP
 
-#### SOP-G008: Cross-Skill Coordination
+#### SOP-G009: Cross-Skill Coordination
 **Purpose**: Coordinate with other skills for seamless workflow
 
 **With Installation Skill**:
@@ -467,7 +386,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 
 ### Quality Assurance SOP
 
-#### SOP-G011: Quality Assurance Framework
+#### SOP-G010: Quality Assurance Framework
 **Purpose**: Ensure comprehensive quality standards across test generation processes
 
 **Procedure**:
@@ -495,7 +414,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
    - [ ] Check maintainability and modularity
    - [ ] Validate resource optimization
 
-#### SOP-G012: Continuous Quality Improvement
+#### SOP-G011: Continuous Quality Improvement
 **Purpose**: Implement continuous improvement processes for test generation quality
 
 **Procedure**:
@@ -552,3 +471,95 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 - Support multiple environments through environment-specific configurations
 - Validate all required environment variables before test execution
 - Provide clear error messages for missing configuration
+
+### Fallback Mode Management SOP
+
+#### SOP-G012: Interactive Mode Selection Workflow (MANDATORY)
+**Purpose**: Provide structured guidance when no generation mode is specified, ensuring informed decision-making and preventing accidental test generation
+
+**Procedure**:
+1. **Initial Assessment**
+   - [ ] **MANDATORY**: Check if generation mode parameter is provided
+   - [ ] **MANDATORY**: If no mode specified, initiate interactive selection
+   - [ ] Assess user's existing resources (requirements, documentation, user stories)
+   - [ ] Determine user's testing needs and objectives
+
+2. **Mode Presentation and Education**
+   - [ ] **MANDATORY**: Present both available modes with clear descriptions
+   - [ ] Provide use case examples for each mode
+   - [ ] Explain expected timeline and outcomes for each mode
+   - [ ] Highlight pros and cons of each approach
+
+3. **Decision Guidance**
+   - [ ] **MANDATORY**: Ask clarifying questions about user's requirements
+   - [ ] Guide user toward most appropriate mode based on resources
+   - [ ] Validate user's understanding of chosen mode implications
+   - [ ] Document user's decision criteria and rationale
+
+4. **Confirmation and Validation**
+   - [ ] **MANDATORY**: Obtain explicit mode selection confirmation
+   - [ ] Validate source path accessibility and relevance
+   - [ ] Confirm test scope and expected deliverables
+   - [ ] **MANDATORY**: Get final approval before proceeding
+
+5. **Safety Enforcement**
+   - [ ] **MANDATORY**: Never generate test files without explicit user approval
+   - [ ] Implement multi-step confirmation process
+   - [ ] Validate all prerequisites before generation
+   - [ ] Provide clear undo/abort options at any step
+
+#### SOP-G013: User Guidance and Education Framework (MANDATORY)
+**Purpose**: Ensure users receive comprehensive guidance to make informed decisions about test generation approaches
+
+**Procedure**:
+1. **Resource Assessment**
+   - [ ] **MANDATORY**: Evaluate available source materials
+   - [ ] Assess application complexity and scope
+   - [ ] Identify user's testing experience level
+   - [ ] Determine available time and resources
+
+2. **Educational Content Delivery**
+   - [ ] **MANDATORY**: Explain each generation mode in detail
+   - [ ] Provide real-world examples and use cases
+   - [ ] Show sample outputs for each mode
+   - [ ] Explain trade-offs and decision factors
+
+3. **Interactive Decision Support**
+   - [ ] **MANDATORY**: Ask targeted questions to understand needs
+   - [ ] Provide personalized recommendations based on responses
+   - [ ] Allow for questions and clarification
+   - [ ] Adapt guidance based on user feedback
+
+4. **Expectation Management**
+   - [ ] **MANDATORY**: Set clear expectations about timelines and outcomes
+   - [ ] Explain what will and won't be generated
+   - [ ] Describe post-generation steps and requirements
+   - [ ] Provide realistic estimates of effort and complexity
+
+#### SOP-G014: Generation Prevention and Safety Controls (MANDATORY)
+**Purpose**: Implement robust safety measures to prevent accidental test generation and ensure explicit user consent
+
+**Procedure**:
+1. **Pre-Generation Validation**
+   - [ ] **MANDATORY**: Verify explicit mode selection
+   - [ ] Validate source path accessibility and permissions
+   - [ ] Check for existing test files that might be overwritten
+   - [ ] Assess system resource availability
+
+2. **Multi-Step Confirmation**
+   - [ ] **MANDATORY**: First confirmation: Mode selection and approach
+   - [ ] **MANDATORY**: Second confirmation: Source path and scope
+   - [ ] **MANDATORY**: Third confirmation: Final approval to generate
+   - [ ] Document all confirmation points for audit trail
+
+3. **Abort and Undo Mechanisms**
+   - [ ] **MANDATORY**: Provide clear abort options at each step
+   - [ ] Allow users to modify decisions before generation
+   - [ ] Implement rollback procedures if needed
+   - [ ] Maintain state for resumption capabilities
+
+4. **Post-Generation Review**
+   - [ ] **MANDATORY**: Present generated test summary
+   - [ ] Allow for immediate review and modification
+   - [ ] Provide guidance on next steps and maintenance
+   - [ ] Document generation process and decisions

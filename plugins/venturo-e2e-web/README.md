@@ -36,7 +36,7 @@ A modern, modular E2E testing plugin that leverages specialized agents and reusa
 ### 2. Generate Tests
 ```bash
 /venturo-e2e-web:generate manual
-/venturo-e2e-web:generate auto --source=./src/components
+/venturo-e2e-web:generate story --source=./requirements.md
 ```
 
 ### 3. Run Tests
@@ -87,7 +87,7 @@ A modern, modular E2E testing plugin that leverages specialized agents and reusa
 ### Test Generation Patterns
 ```bash
 /venturo-e2e-web:generate story --pattern=pom
-/venturo-e2e-web:generate auto --source=./src/pages --device=mobile
+/venturo-e2e-web:generate story --source=./src/pages --device=mobile
 ```
 
 ### Test Execution Modes
