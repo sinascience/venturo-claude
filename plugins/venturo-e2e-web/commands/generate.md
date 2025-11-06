@@ -69,21 +69,32 @@ Silahkan balas dengan angka **1** untuk Manual Mode atau **2** untuk Story Mode.
 ### Story Mode
 1. **Scenario Discovery** - AI asks "What scenario would you like to test?"
 2. **Scenario Description** - User provides detailed scenario description
-3. **Test Plan Creation** - AI creates structured test plan from user input
-4. **Plan Confirmation** - User reviews and confirms/approves the plan
-5. **Test Generation** - AI generates tests based on approved plan
+3. **Automated Test Plan & Approval** - AI generates complete test plan including positive/negative cases and asks for single approval
+4. **Test Generation** - AI generates tests based on approved plan
 
 ## Output Structure
 ```
 tests/
-├── features/
-│   ├── {feature-name}/
-│   │   ├── {scenario-name}.spec.ts
-│   │   └── {scenario-name}.spec.ts
-└── config/
-    ├── .env
-    └── .env.example
+├── login/
+│   ├── successful-login.spec.ts
+│   ├── invalid-login.spec.ts
+│   └── forgot-password.spec.ts
+├── registration/
+│   ├── successful-registration.spec.ts
+│   ├── validation-errors.spec.ts
+│   └── duplicate-email.spec.ts
+├── dashboard/
+│   ├── navigation.spec.ts
+│   ├── data-display.spec.ts
+│   └── user-profile.spec.ts
+└── .env
 ```
+
+**MANDATORY Requirements:**
+- **1 scenario = 1 file** - No exceptions
+- **Feature-based grouping** - All tests organized by feature
+- **No fixture/helper files** - All utilities inline
+- **VPS compatible** - Single files ready for deployment
 
 ## Best Practices Applied
 - Uses data-testid selectors for stability

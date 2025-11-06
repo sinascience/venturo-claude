@@ -23,7 +23,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 ### Generation Modes SOP
 
 #### SOP-G001: Interactive Story Mode Generation
-**Purpose**: Generate tests through conversational 5-step workflow with user collaboration and explicit confirmations
+**Purpose**: Generate tests through conversational 4-step workflow with user collaboration and automated test plan generation
 
 **Procedure**:
 1. **Scenario Discovery**
@@ -38,19 +38,17 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
    - [ ] Document acceptance criteria and success conditions
    - [ ] Identify key user interactions and system responses
 
-3. **Test Plan Creation**
-   - [ ] **MANDATORY**: Structure user input into actionable test plan
-   - [ ] Identify primary test scenarios and edge cases
-   - [ ] Suggest appropriate test patterns and approaches
-   - [ ] Define test scope and expected deliverables
+3. **Automated Test Plan Generation & Approval**
+   - [ ] **MANDATORY**: Generate comprehensive test plan automatically including:
+     - Main test scenarios (3-5 core test cases)
+     - Positive test cases (happy path scenarios)
+     - Negative test cases (edge cases, error conditions)
+     - Test execution steps and expected results
+   - [ ] Present complete plan to user for single approval
+   - [ ] Include clear coverage explanation (positive/negative cases)
+   - [ ] Obtain simple user confirmation: "Y/N" or "Approve/Modify"
 
-4. **Plan Confirmation**
-   - [ ] **MANDATORY**: Present test plan to user for review and approval
-   - [ ] Explain test scenarios and coverage approach
-   - [ ] Allow user to modify or refine the plan
-   - [ ] Obtain explicit user confirmation before proceeding
-
-5. **Test Generation Execution**
+4. **Test Generation Execution**
    - [ ] **MANDATORY**: Generate tests based on approved plan only
    - [ ] Create self-contained test files with inline utilities
    - [ ] Implement environment variable management
@@ -98,7 +96,7 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 **Procedure**:
 1. **File Structure Standards**
    ```
-   tests/features/{feature-name}/{scenario-name}.spec.ts
+   tests/{feature-name}/{scenario-name}.spec.ts
    tests/.env                              # Environment configuration
    tests/.env.example                      # Environment template
    ```
@@ -348,9 +346,9 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 
 ### 3. Test Case Generation
 - Create Playwright test files with proper structure
-- Generate page objects and test utilities
+- **MANDATORY**: Generate single test files with inline utilities only
 - Implement test data management through environment variables
-- Create maintainable test patterns
+- Create maintainable test patterns with 1 scenario = 1 file rule
 
 ### 4. Best Practices Integration
 - Follow Playwright naming conventions
@@ -562,3 +560,196 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
    - [ ] Allow for immediate review and modification
    - [ ] Provide guidance on next steps and maintenance
    - [ ] Document generation process and decisions
+
+#### SOP-G015: Single-File Test Structure Validation (MANDATORY)
+**Purpose**: Ensure generated tests follow 1 scenario = 1 file rule with no external dependencies
+
+**Procedure**:
+1. **File Structure Validation**
+   - [ ] **MANDATORY**: Each file contains exactly one test scenario
+   - [ ] **MANDATORY**: All test utilities are inline functions
+   - [ ] **MANDATORY**: No external fixture files
+   - [ ] **MANDATORY**: No separate helper files
+   - [ ] **MANDATORY**: No page object files
+
+2. **Content Validation**
+   - [ ] All selectors are defined within the test file
+   - [ ] All test data is inline or from environment variables
+   - [ ] All utility functions are defined within the file
+   - [ ] No imports of external test utilities
+
+3. **Directory Structure Validation**
+   - [ ] Tests are in `tests/{feature-name}/` structure
+   - [ ] Feature directories contain only test files
+   - [ ] No utility or helper directories under test directories
+   - [ ] No shared fixture directories
+
+#### SOP-G016: Feature-Based Grouping Enforcement (MANDATORY)
+**Purpose**: Enforce mandatory feature-based organization for all generated tests
+
+**Procedure**:
+1. **Feature Identification**
+   - [ ] **MANDATORY**: Identify primary feature for each scenario
+   - [ ] **MANDATORY**: Create appropriate feature directory
+   - [ ] **MANDATORY**: Use consistent feature naming
+   - [ ] **MANDATORY**: Group related scenarios under same feature
+
+2. **Directory Structure Enforcement**
+   - [ ] **MANDATORY**: All tests in `tests/{feature-name}/`
+   - [ ] **MANDATORY**: Feature names match application features
+   - [ ] **MANDATORY**: No tests outside feature directories
+   - [ ] **MANDATORY**: No cross-feature dependencies
+
+3. **File Organization Validation**
+   - [ ] **MANDATORY**: One scenario per file
+   - [ ] **MANDATORY**: Descriptive scenario-based file names
+   - [ ] **MANDATORY**: No multi-scenario files
+   - [ ] **MANDATORY**: No shared test files across features
+
+#### SOP-G017: Story Mode Feature Identification (MANDATORY)
+**Purpose**: Ensure Story Mode workflow includes mandatory feature identification step
+
+**Procedure**:
+1. **Feature Discovery Integration**
+   - [ ] **MANDATORY**: After scenario description, ask for feature name
+   - [ ] **MANDATORY**: Include "Nama fitur untuk grouping folder?" question
+   - [ ] **MANDATORY**: Validate feature name appropriateness
+   - [ ] **MANDATORY**: Confirm feature directory creation
+
+2. **Test Plan Integration**
+   - [ ] **MANDATORY**: Include feature directory in test plan output
+   - [ ] **MANDATORY**: Show file paths as `tests/{feature}/{scenario}.spec.ts`
+   - [ ] **MANDATORY**: Validate plan complies with single-file rule
+   - [ ] **MANDATORY**: Ensure no multi-file dependencies
+
+3. **Generation Validation**
+   - [ ] **MANDATORY**: Generate tests to correct feature directory
+   - [ ] **MANDATORY**: Validate single-file output structure
+   - [ ] **MANDATORY**: Confirm no fixture/helper files created
+   - [ ] **MANDATORY**: Verify feature-based compliance
+
+## Automated Test Plan Generation Templates
+
+### Test Plan Structure Template
+```
+## 📋 Test Plan: [Feature/Scenario Name]
+
+### 🎯 Main Test Scenarios (3-5 core cases)
+1. **[Scenario 1]**: [Brief description]
+2. **[Scenario 2]**: [Brief description]
+3. **[Scenario 3]**: [Brief description]
+
+### ✅ Positive Test Cases (Happy Path)
+1. **[Positive Case 1]**: [Description + expected result]
+2. **[Positive Case 2]**: [Description + expected result]
+3. **[Positive Case 3]**: [Description + expected result]
+
+### ❌ Negative Test Cases (Edge Cases & Errors)
+1. **[Negative Case 1]**: [Error condition + expected handling]
+2. **[Negative Case 2]**: [Invalid input + expected validation]
+3. **[Negative Case 3]**: [System error + expected fallback]
+
+### 📝 Test Execution Steps
+For each scenario:
+- **Given**: [Preconditions]
+- **When**: [User actions]
+- **Then**: [Expected outcomes]
+
+### 🎯 Expected Results
+- [Specific success criteria]
+- [Error handling validation]
+- [Performance expectations]
+```
+
+### Common Test Pattern Templates
+
+#### Form Submission Pattern
+```
+**Main Scenarios:**
+1. Successful form submission with valid data
+2. Form validation with empty required fields
+3. Form submission with invalid data format
+
+**Positive Cases:**
+- All required fields filled correctly → Success message displayed
+- Optional fields left empty → Form processes correctly
+- File upload with valid format → File uploaded successfully
+
+**Negative Cases:**
+- Required fields empty → Validation errors shown
+- Invalid email format → Email validation error
+- File too large → File size error message
+- Duplicate submission → Duplicate prevention message
+```
+
+#### Login/Authentication Pattern
+```
+**Main Scenarios:**
+1. Successful login with valid credentials
+2. Login attempt with invalid password
+3. Login attempt with non-existent user
+
+**Positive Cases:**
+- Valid credentials → Dashboard/home page access
+- Remember me checked → Session persistence
+- Successful logout → Redirect to login page
+
+**Negative Cases:**
+- Invalid password → "Invalid credentials" error
+- Non-existent user → "User not found" error
+- Empty fields → Validation errors for both fields
+- Account locked → "Account suspended" message
+```
+
+#### Navigation Pattern
+```
+**Main Scenarios:**
+1. Navigate to main pages
+2. Access protected routes
+3. Handle broken/invalid routes
+
+**Positive Cases:**
+- Click navigation links → Correct pages load
+- Browser back/forward → Proper navigation history
+- Direct URL access → Correct page displays
+
+**Negative Cases:**
+- Invalid routes → 404 page displayed
+- Protected routes without auth → Redirect to login
+- Broken links → Error handling or fallback
+```
+
+### User Approval Template
+```
+## 🤔 Test Plan Approval
+
+Saya telah membuat rencana tes otomatis untuk skenario Anda di atas. Rencana ini mencakup:
+
+✅ **Coverage lengkap**: Positive cases (happy path) + Negative cases (edge cases)
+✅ **3-5 skenario utama** sesuai kebutuhan Anda
+✅ **Test steps yang jelas** untuk setiap skenario
+✅ **Expected results yang spesifik**
+
+**Apakah Anda menyetujui rencana tes ini?**
+- Balas: **Y/Yes/Approve** untuk melanjutkan ke pembuatan test
+- Balas: **N/No/Modify** untuk mengubah rencana
+
+Silakan berikan persetujuan Anda untuk melanjutkan. 🚀
+```
+
+## Implementation Notes
+
+### Automated Plan Generation Process:
+1. **Analyze user scenario** from Step 2 input
+2. **Select appropriate pattern template** based on scenario type
+3. **Generate comprehensive plan** with positive/negative cases
+4. **Present to user** with clear approval request
+5. **Execute test generation** upon approval
+
+### Template Usage Guidelines:
+- Use **form pattern** for user input scenarios
+- Use **auth pattern** for login/register scenarios
+- Use **navigation pattern** for routing scenarios
+- **Customize templates** based on specific user needs
+- **Always include** both positive and negative cases
+- **Keep scenarios** to 3-5 main cases for focus

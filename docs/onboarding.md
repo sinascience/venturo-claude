@@ -55,7 +55,7 @@ Execute your generated tests:
 /venturo-e2e-web:run all
 
 # Run specific test directory
-/venturo-e2e-web:run tests/features/auth/
+/venturo-e2e-web:run tests/auth/
 
 # Run with specific browser
 /venturo-e2e-web:run all --project=chromium
@@ -79,14 +79,12 @@ After running through these steps, you'll have:
 
 ```
 tests/
-├── features/
-│   ├── auth/
-│   │   ├── login.spec.ts
-│   │   └── logout.spec.ts
-│   └── other-features/
-├── config/
-│   ├── .env.example
-│   └── .env (your environment variables)
+├── auth/
+│   ├── login.spec.ts
+│   └── logout.spec.ts
+├── other-features/
+├── .env.example
+├── .env (your environment variables)
 └── reports/ (generated after test runs)
 ```
 
@@ -94,7 +92,7 @@ tests/
 
 ### Required Environment Variables
 
-Create `tests/config/.env` with your test data:
+Create `tests/.env` with your test data:
 
 ```bash
 # Your application URLs

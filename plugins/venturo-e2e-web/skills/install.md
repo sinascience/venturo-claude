@@ -105,9 +105,9 @@ Standardize Playwright installation process to ensure consistent, reliable setup
    - [ ] Configure .gitignore for test artifacts and environment files
 
 4. **Sample Test Creation**
-   - [ ] Generate basic example test
-   - [ ] Create page object templates
-   - [ ] Set up helper functions
+   - [ ] Generate basic example test with **MANDATORY** single-file structure
+   - [ ] Demonstrate **MANDATORY** feature-based organization
+   - [ ] Show inline utilities (NO external files)
    - [ ] Initialize environment variable configuration templates
 
 ### Browser Installation SOP

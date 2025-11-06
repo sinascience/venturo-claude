@@ -39,10 +39,11 @@ Standardize test execution process to ensure reliable, consistent test runs with
    - [ ] Check system resource availability
 
 3. **Dependency Validation**
-   - [ ] Verify test file accessibility
-   - [ ] Check page object and helper files
-   - [ ] Validate environment variable configuration
-   - [ ] Confirm mock API configurations
+   - [ ] **MANDATORY**: Verify test file accessibility in `tests/` structure
+   - [ ] **MANDATORY**: Verify NO page object or helper files exist
+   - [ ] **MANDATORY**: Validate single-file test structure
+   - [ ] Validate environment variable configuration (if used)
+   - [ ] Confirm mock API configurations (if used)
 
 4. **Security & Permissions**
    - [ ] Verify file system permissions
