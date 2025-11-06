@@ -474,39 +474,38 @@ Standardize E2E test generation process to ensure consistent, high-quality test 
 
 ### Fallback Mode Management SOP
 
-#### SOP-G012: Interactive Mode Selection Workflow (MANDATORY)
-**Purpose**: Provide structured guidance when no generation mode is specified, ensuring informed decision-making and preventing accidental test generation
+#### SOP-G012: Focused Mode Selection Workflow (MANDATORY)
+**Purpose**: Provide quick, focused mode selection with minimal user interaction while ensuring informed decision-making
 
 **Procedure**:
 1. **Initial Assessment**
    - [ ] **MANDATORY**: Check if generation mode parameter is provided
-   - [ ] **MANDATORY**: If no mode specified, initiate interactive selection
-   - [ ] Assess user's existing resources (requirements, documentation, user stories)
-   - [ ] Determine user's testing needs and objectives
+   - [ ] **MANDATORY**: If no mode specified, initiate focused selection
+   - [ ] Keep interaction to maximum 2 user responses
 
-2. **Mode Presentation and Education**
-   - [ ] **MANDATORY**: Present both available modes with clear descriptions
-   - [ ] Provide use case examples for each mode
-   - [ ] Explain expected timeline and outcomes for each mode
-   - [ ] Highlight pros and cons of each approach
+2. **Simple Mode Presentation**
+   - [ ] **MANDATORY**: Present two clear options with brief descriptions
+   - [ ] Use numbered responses: "1. Manual Mode - [brief description]"
+   - [ ] Use numbered responses: "2. Story Mode - [brief description]"
+   - [ ] **MANDATORY**: Request response with number: "Silahkan balas dengan angka 1 atau 2"
 
-3. **Decision Guidance**
-   - [ ] **MANDATORY**: Ask clarifying questions about user's requirements
-   - [ ] Guide user toward most appropriate mode based on resources
-   - [ ] Validate user's understanding of chosen mode implications
-   - [ ] Document user's decision criteria and rationale
+3. **Direct User Response**
+   - [ ] **MANDATORY**: Accept user response as single number (1 or 2)
+   - [ ] No additional clarifying questions allowed
+   - [ ] Proceed directly to chosen mode workflow
+   - [ ] Document user's selection
 
-4. **Confirmation and Validation**
-   - [ ] **MANDATORY**: Obtain explicit mode selection confirmation
-   - [ ] Validate source path accessibility and relevance
-   - [ ] Confirm test scope and expected deliverables
+4. **Single Confirmation**
+   - [ ] **MANDATORY**: Confirm user's choice with one question
+   - [ ] Validate source path accessibility if needed
    - [ ] **MANDATORY**: Get final approval before proceeding
+   - [ ] Keep total questions to maximum 2 (selection + confirmation)
 
 5. **Safety Enforcement**
    - [ ] **MANDATORY**: Never generate test files without explicit user approval
-   - [ ] Implement multi-step confirmation process
+   - [ ] Maintain clear option to cancel at any step
+   - [ ] Ensure user understands chosen mode implications
    - [ ] Validate all prerequisites before generation
-   - [ ] Provide clear undo/abort options at any step
 
 #### SOP-G013: User Guidance and Education Framework (MANDATORY)
 **Purpose**: Ensure users receive comprehensive guidance to make informed decisions about test generation approaches

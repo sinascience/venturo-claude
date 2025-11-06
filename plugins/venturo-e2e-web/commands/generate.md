@@ -46,84 +46,15 @@ Generates comprehensive E2E test cases using Playwright from user stories, requi
 /venturo-e2e-web:generate story --source=./requirements.md
 ```
 
-## Interactive Mode Selection
+## Mode Selection
 
-When no mode is specified, the system will guide you through an interactive selection process:
+When no mode is specified, choose your generation approach:
 
-### Step 1: Mode Presentation
-The system presents two generation modes with detailed descriptions:
+**1. Manual Mode** - Langsung buat test dengan panduan langkah demi langkah
+**2. Story Mode** - Test dibuat melalui percakapan 5 langkah dengan persetujuan Anda
 
-**Manual Mode** 🎯
-- **Best for**: Specific features, user stories, or precise test requirements
-- **Process**: Interactive step-by-step test creation
-- **Control**: Full control over test scenarios and implementation
-- **Time**: 10-20 minutes per test suite
+Silahkan balas dengan angka **1** untuk Manual Mode atau **2** untuk Story Mode.
 
-**Story Mode** 📖
-- **Best for**: Collaborative test creation through conversation
-- **Process**: Interactive 5-step workflow with scenario discovery and planning
-- **Control**: User-guided test creation with explicit confirmations
-- **Time**: 20-30 minutes per scenario (including planning and approval)
-
-### Step 2: Decision Guidance
-The system helps you choose by asking:
-- Do you have specific requirements or user stories? → **Story Mode**
-- Do you want precise control over test scenarios? → **Manual Mode**
-
-### Step 3: Confirmation
-Before any test generation occurs, the system requires:
-- Explicit mode selection confirmation
-- Source path validation
-- Test scope agreement
-- Final approval to proceed
-
-### Step 4: Generation Execution
-Only after explicit confirmation does test generation begin with your chosen mode.
-
-## Story Mode Dialogue Examples
-
-### Example 1: User Login Scenario
-```
-AI: What scenario would you like to test?
-User: I want to test the user login functionality on my e-commerce site.
-
-AI: Great! Can you describe the login scenario in more detail? What should happen, and what are the key steps?
-User: User should be able to login with valid credentials, see error for invalid credentials, and be redirected to dashboard after successful login.
-
-AI: Perfect! Here's my test plan based on your description:
-1. Test successful login with valid credentials
-2. Test error handling with invalid password
-3. Test error handling with non-existent email
-4. Verify redirect to dashboard after successful login
-5. Check session persistence across page refresh
-
-Does this plan cover what you had in mind? Should I add or modify anything?
-User: Yes, that looks good. Please generate the tests.
-
-AI: Perfect! I'll now generate the test files based on your approved plan...
-```
-
-### Example 2: Shopping Cart Scenario
-```
-AI: What scenario would you like to test?
-User: Shopping cart functionality for adding, removing, and updating items.
-
-AI: Can you provide more details about the shopping cart behavior you want to test?
-User: Users should add items to cart, update quantities, remove items, and see correct totals calculated.
-
-AI: Here's my proposed test plan:
-1. Add single item to cart and verify it appears
-2. Add multiple different items to cart
-3. Update quantity for existing cart item
-4. Remove item from cart
-5. Verify total price calculation updates correctly
-6. Test cart persistence when navigating between pages
-
-Ready for me to generate these tests?
-User: Yes, proceed!
-
-AI: Excellent! Generating test files now...
-```
 
 ## Generation Process
 
