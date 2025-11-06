@@ -1,11 +1,12 @@
 ---
 description: Install and validate Playwright with dependencies, configuration, and browsers
-agent: installer
 ---
 
 # Playwright Installation
 
-Installs and configures Playwright for E2E testing with proper dependencies and browser setup.
+**Use the Playwright Installer agent to install and configure Playwright for E2E testing with proper dependencies and browser setup.**
+
+The Playwright Installer agent will handle all setup requirements, validate installation, and prepare your environment for E2E testing.
 
 ## Usage
 ```

@@ -1,12 +1,13 @@
 ---
 description: Execute live E2E tests with visible browser for real-time observation and debugging
-agent: live-tester
 argument-hint: [url-or-spec] [browser-options]
 ---
 
 # Live Testing
 
-Executes E2E tests in real-time with visible browser for observation, debugging, and interactive testing scenarios.
+**Use the Live Tester agent to execute E2E tests in real-time with visible browser for observation, debugging, and interactive testing scenarios.**
+
+The Live Tester agent provides hands-on testing capabilities with live observation and immediate feedback for validation and debugging.
 
 ## Usage
 ```

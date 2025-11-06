@@ -1,12 +1,13 @@
 ---
 description: Generate Playwright E2E test cases from user stories and application analysis
-agent: generator
 argument-hint: [mode?] (manual|story)?
 ---
 
 # Test Generation
 
-Generates comprehensive E2E test cases using Playwright from user stories, requirements, or application analysis.
+**Use the Test Generator agent to generate comprehensive E2E test cases using Playwright from user stories, requirements, or application analysis.**
+
+The Test Generator agent will guide you through creating maintainable, reliable tests following Playwright best practices and comprehensive coverage of user scenarios.
 
 ## Usage
 ```

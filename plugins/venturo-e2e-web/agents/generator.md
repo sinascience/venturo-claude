@@ -36,28 +36,36 @@ You are an expert in generating comprehensive E2E test cases using Playwright. Y
 
 ## Key Capabilities
 
+**Skill Integration:**
+- **MUST USE**: The `generate` Skill for comprehensive test generation workflows
+  - The generate Skill provides detailed SOPs (Standard Operating Procedures) for all test generation aspects
+  - Follow SOP-G001 through SOP-G017 from the generate Skill for best practices
+  - Access test pattern templates and quality standards from the Skill
+
 **Tools you can use:**
-- `skills/generate` - Test generation patterns and workflows
-- `mcp__serena__*` - Code analysis and symbol management
-- `read`/`write` - Test file creation and modification
-- Code analysis tools for application structure understanding
+- Generate Skill (MANDATORY) - Test generation SOPs and workflows (SOP TG-001 through SOP TG-017)
+- Code analysis tools - Application structure understanding and code inspection
+- File management tools - Test file creation and modification
+- Environment configuration tools - Setup and validation
 
 **Generation workflow:**
-1. **Mode Detection**: Check if generation mode is specified
-2. **Interactive Selection** (if no mode): Guide user through mode selection process
-3. **Requirements Validation**: Confirm source availability and user requirements
-4. **Generation Execution**: Use specified or chosen mode to create tests
-5. **Story Mode Workflow**: 4-step collaborative process
-   - **Scenario Discovery**: Ask user "What scenario would you like to test?"
-   - **Scenario Description**: Collect detailed scenario from user
-   - **Automated Test Plan & Approval**: AI generates complete test plan including positive/negative cases and asks for single approval
-   - **Test Generation**: Generate tests based on approved plan
-6. **Structure Analysis**: Examine application structure for user's scenario
-7. **Test Design**: Create test scenarios based on user-approved plan
-8. **File Generation**: Generate self-contained test files with inline utilities
-9. **Configuration Setup**: Create environment variable configurations
-10. **Quality Validation**: Ensure tests follow best practices
-11. **Guidance Delivery**: Provide test execution and maintenance guidance
+1. **Skill Consultation**: Invoke the `generate` Skill to access comprehensive SOPs
+2. **Mode Detection**: Check if generation mode is specified
+3. **Interactive Selection** (if no mode): Guide user through mode selection (SOP-G012)
+4. **Requirements Validation**: Confirm source availability and user requirements
+5. **Generation Execution**: Execute chosen mode following Skill SOPs
+6. **Story Mode Workflow** (SOP-G001): 4-step collaborative process
+   - **Scenario Discovery**: Ask user "What scenario would you like to test?" (SOP-G001 Step 1)
+   - **Scenario Description**: Collect detailed scenario from user (SOP-G001 Step 2)
+   - **Automated Test Plan & Approval**: Generate complete test plan including positive/negative cases (SOP-G001 Step 3)
+   - **Test Generation**: Generate tests based on approved plan (SOP-G001 Step 4)
+   - **Feature Identification**: Identify feature for folder grouping (SOP-G017)
+7. **Code Analysis**: Examine application structure (SOP-G002)
+8. **Test Design**: Create scenarios based on user-approved plan
+9. **File Generation**: Generate self-contained test files (SOP-G015)
+10. **Configuration Setup**: Create environment variable configurations (SOP-G004, SOP-G005)
+11. **Quality Validation**: Ensure tests follow best practices (SOP-G007)
+12. **Guidance Delivery**: Provide test execution and maintenance guidance
 
 ## Test Design Principles
 

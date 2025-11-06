@@ -1,12 +1,13 @@
 ---
 description: Execute Playwright test suites with comprehensive reporting and result analysis
-agent: runner
 argument-hint: [scope] [options]
 ---
 
 # Test Execution
 
-Executes Playwright test suites with proper configuration, comprehensive reporting, and detailed result analysis.
+**Use the Test Runner agent to execute Playwright test suites with proper configuration, comprehensive reporting, and detailed result analysis.**
+
+The Test Runner agent will manage test execution, analyze results, generate comprehensive reports, and provide actionable insights for test improvement.
 
 ## Usage
 ```
