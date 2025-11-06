@@ -104,12 +104,6 @@ Standardize Playwright installation process to ensure consistent, reliable setup
    - [ ] Create test-results/ output directory
    - [ ] Configure .gitignore for test artifacts and environment files
 
-4. **Sample Test Creation**
-   - [ ] Generate basic example test with **MANDATORY** single-file structure
-   - [ ] Demonstrate **MANDATORY** feature-based organization
-   - [ ] Show inline utilities (NO external files)
-   - [ ] Initialize environment variable configuration templates
-
 ### Browser Installation SOP
 
 #### SOP-PI004: Browser Binary Installation
@@ -179,15 +173,8 @@ Standardize Playwright installation process to ensure consistent, reliable setup
 
 3. **Reporting Configuration**
    - [ ] Set up HTML reporter
-   - [ ] Configure JSON reporter for CI/CD
    - [ ] Set up video recording options
    - [ ] Configure screenshot capture
-
-4. **CI/CD Integration**
-   - [ ] Configure environment-specific settings
-   - [ ] Set up CI-friendly reporter options
-   - [ ] Configure headless mode for automation
-   - [ ] Set up artifact collection
 
 ### Validation SOP
 
@@ -220,7 +207,7 @@ Standardize Playwright installation process to ensure consistent, reliable setup
    - [ ] Test reporter functionality
 
 4. **End-to-End Validation**
-   - [ ] Run sample test execution
+   - [ ] Create 1 file sample test and Run sample test execution (dont create fixture, utils and any others)
    - [ ] Verify screenshot capture
    - [ ] Test video recording functionality
    - [ ] Confirm report generation
@@ -277,7 +264,6 @@ Standardize Playwright installation process to ensure consistent, reliable setup
    - [ ] Review configuration settings quarterly
    - [ ] Update timeout values as needed
    - [ ] Optimize performance settings
-   - [ ] Update CI/CD configurations
 
 4. **Cleanup Procedures**
    - [ ] Clean up test artifacts regularly
@@ -333,7 +319,6 @@ Standardize Playwright installation process to ensure consistent, reliable setup
 - Create/playwright.config.ts or .js files
 - Configure test environments and timeouts
 - Set up reporting and output directories
-- Configure CI/CD integration settings
 
 ### 4. Validation
 - Verify installation completeness
