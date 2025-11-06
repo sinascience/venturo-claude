@@ -7,18 +7,6 @@
     "email": "info@venturo.com"
   },
   "license": "MIT",
-  "commands": [
-    "./commands"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "agents": [
-    "./agents/installer.md",
-    "./agents/generator.md",
-    "./agents/runner.md",
-    "./agents/live-tester.md"
-  ],
   "mcpServers": "./.mcp.json",
   "keywords": ["playwright", "e2e", "testing", "automation", "qa"]
 }

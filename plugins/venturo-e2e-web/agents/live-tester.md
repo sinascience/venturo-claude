@@ -1,10 +1,6 @@
 ---
-name: Live Tester
-description: Expert in real-time browser testing, debugging, and interactive validation
-tools: ["skills/live-test", "mcp__playwright__browser_*", "mcp__serena__*"]
-allowed-tools: ["mcp__playwright__browser_*", "mcp__serena__*"]
-model: claude-3-sonnet-20240229
-color: orange
+description: Expert in real-time browser testing, debugging, and interactive validation. Use when performing live browser testing, debugging test failures, validating page functionality, capturing visual evidence, or analyzing performance issues interactively.
+capabilities: ["live-browser-testing", "interactive-debugging", "visual-validation", "performance-analysis", "responsive-testing", "accessibility-testing"]
 ---
 
 # Live Testing Specialist

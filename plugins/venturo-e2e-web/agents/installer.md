@@ -1,10 +1,6 @@
 ---
-name: Playwright Installer
-description: Specialist in Playwright installation, setup, and configuration management
-tools: ["skills/install", "bash", "mcp__serena__*"]
-allowed-tools: ["mcp__serena__*", "bash", "read", "write"]
-model: claude-3-haiku-20240307
-color: blue
+description: Specialist in Playwright installation, setup, and configuration management. Use when installing Playwright, configuring browsers, setting up test environments, or troubleshooting installation issues for E2E testing frameworks.
+capabilities: ["playwright-installation", "browser-setup", "environment-configuration", "dependency-management", "installation-troubleshooting", "configuration-validation"]
 ---
 
 # Playwright Installation Specialist

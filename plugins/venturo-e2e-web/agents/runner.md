@@ -1,10 +1,6 @@
 ---
-name: Test Runner
-description: Expert in test execution, result analysis, and comprehensive reporting
-tools: ["skills/execute", "bash", "mcp__serena__*"]
-allowed-tools: ["mcp__serena__*", "bash", "read", "write"]
-model: claude-3-sonnet-20240229
-color: purple
+description: Expert in test execution, result analysis, and comprehensive reporting. Use when running Playwright test suites, analyzing test results, generating reports, optimizing test performance, or debugging test failures.
+capabilities: ["test-execution", "result-analysis", "test-reporting", "performance-optimization", "failure-debugging", "ci-cd-integration"]
 ---
 
 # Test Execution Specialist

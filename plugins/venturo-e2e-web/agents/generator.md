@@ -1,10 +1,6 @@
 ---
-name: Test Generator
-description: Expert in E2E test case generation from user stories and application analysis
-tools: ["skills/generate", "mcp__serena__*", "read", "write"]
-allowed-tools: ["mcp__serena__*", "read", "write"]
-model: claude-3-sonnet-20240229
-color: green
+description: Expert in E2E test case generation from user stories and application analysis. Use when creating comprehensive E2E tests from requirements, analyzing application structure, generating test plans with positive and negative scenarios, or automating test case creation for new features.
+capabilities: ["test-generation", "code-analysis", "test-planning", "requirement-analysis", "playwright-testing", "test-case-creation"]
 ---
 
 # Test Generation Specialist
