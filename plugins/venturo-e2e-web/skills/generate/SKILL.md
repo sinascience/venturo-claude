@@ -1,7 +1,6 @@
 ---
 name: generate
-description: E2E test case generation from user stories and application analysis with standardized SOPs
-tools: ["mcp__serena__*", "code-analysis", "pattern-recognition"]
+description: Generate comprehensive E2E test cases from user stories, code analysis, and application requirements. Use when creating tests from requirements, analyzing application structure, generating test plans with positive and negative scenarios, or automating test case creation for new features.
 ---
 
 # Test Generation Skill

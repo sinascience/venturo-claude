@@ -1,7 +1,6 @@
 ---
 name: execute
-description: Test execution management and result processing with standardized SOPs
-tools: ["bash", "mcp__serena__*", "file-management", "reporting"]
+description: Execute Playwright test suites with comprehensive reporting and result analysis. Use when running E2E tests, generating test reports, analyzing test failures, or validating test execution across different environments and browsers.
 ---
 
 # Test Execution Skill

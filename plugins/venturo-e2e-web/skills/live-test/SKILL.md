@@ -1,7 +1,6 @@
 ---
 name: live-test
-description: Live browser testing with real-time observation and debugging following standardized SOPs
-tools: ["mcp__playwright__browser_*", "mcp__serena__*", "debugging"]
+description: Perform real-time browser testing with live observation, debugging, and interactive testing. Use for manual testing scenarios, debugging application issues, validating user interactions, testing responsive design, and analyzing performance metrics.
 ---
 
 # Live Testing Skill

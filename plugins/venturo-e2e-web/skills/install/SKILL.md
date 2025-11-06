@@ -1,7 +1,6 @@
 ---
 name: install
-description: Playwright installation and setup management with standardized SOPs
-tools: ["bash", "file-management", "mcp__serena__*"]
+description: Install and configure Playwright framework with browser binaries, project structure, and environment setup. Use when setting up new Playwright projects, installing browsers, validating installations, or configuring test environments.
 ---
 
 # Playwright Installation Skill
