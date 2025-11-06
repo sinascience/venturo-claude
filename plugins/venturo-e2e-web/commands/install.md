@@ -4,14 +4,9 @@ description: Install and configure Playwright with dependencies and browsers
 
 # Playwright Installation
 
-**Use the Playwright Installer agent to install and configure Playwright for E2E testing.**
-
-The Playwright Installer agent handles dependency installation, browser setup, and configuration management.
+**Use the Installer agent to install Playwright and configure test environment.**
 
 ## Usage
-```
-/venturo-e2e-web:install [options]
-```
 
 ## Options
 - `--force` - Force reinstall even if Playwright is already installed

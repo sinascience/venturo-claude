@@ -5,7 +5,7 @@ argument-hint: [scope] [options]
 
 # Test Execution
 
-Execute tests with the Test Runner agent. Specify scope and options to control execution.
+**Use the Test Runner agent to execute test suites with reporting and result analysis.**
 
 ## Usage
 ```

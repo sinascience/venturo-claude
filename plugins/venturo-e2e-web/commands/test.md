@@ -5,7 +5,7 @@ argument-hint: [url-or-spec] [browser-options]
 
 # Live Testing
 
-Execute live tests with the Live Tester agent. Tests run with visible browser for observation and debugging.
+**Use the Live Tester agent to execute live E2E tests with visible browser for real-time observation and debugging.**
 
 ## Usage
 ```
