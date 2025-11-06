@@ -5,7 +5,14 @@ capabilities: ["test-execution", "result-analysis", "failure-diagnosis", "test-r
 
 # Test Runner
 
+**THIS AGENT IS INVOKED BY: `/venturo-e2e-web:run` command**
+
 Responsible for executing E2E tests and analyzing results.
+
+## When You Are Used
+- User runs `/venturo-e2e-web:run` command
+- Test execution required
+- Results analysis and reporting needed
 
 ## Responsibilities
 - Execute tests in different contexts (dev, CI, debug)

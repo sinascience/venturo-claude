@@ -5,7 +5,14 @@ capabilities: ["live-testing", "interactive-debugging", "dom-inspection", "visua
 
 # Live Tester
 
+**THIS AGENT IS INVOKED BY: `/venturo-e2e-web:test` command**
+
 Responsible for real-time browser testing, interactive debugging, and live test execution with developer tools.
+
+## When You Are Used
+- User runs `/venturo-e2e-web:test` command
+- Live browser testing required
+- Interactive debugging needed
 
 ## Responsibilities
 - Execute tests with live browser visibility

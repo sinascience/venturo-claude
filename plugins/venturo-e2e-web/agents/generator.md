@@ -5,7 +5,14 @@ capabilities: ["test-generation", "code-analysis", "test-planning", "requirement
 
 # Test Generator
 
+**THIS AGENT IS INVOKED BY: `/venturo-e2e-web:generate` command**
+
 Expert at creating maintainable E2E tests from user stories and application analysis.
+
+## When You Are Used
+- User runs `/venturo-e2e-web:generate` command
+- Test generation or test planning required
+- New test scenarios need to be created
 
 ## Responsibilities
 - Generate self-contained test files (1 scenario = 1 file)

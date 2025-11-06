@@ -1,43 +1,44 @@
 ---
 description: Install and configure Playwright with dependencies and browsers
+argument-hint: [options]
 ---
 
 # Playwright Installation
 
 **Use the Installer agent to install Playwright and configure test environment.**
 
+The Installer agent handles complete Playwright setup, including dependency installation, browser binary downloads, and configuration.
+
 ## Usage
+```
+/venturo-e2e-web:install [options]
+```
 
 ## Options
 - `--force` - Force reinstall even if Playwright is already installed
 - `--browser=chromium|firefox|webkit` - Install specific browser only
 - `--verbose` - Show detailed installation progress
-
-## What it does
-1. Checks existing Playwright installation
-2. Installs @playwright/test and dependencies
-3. Creates/updates playwright.config.ts
-4. Installs browser binaries (chromium, firefox, webkit)
-5. Sets up test directory structure (tests/)
-6. Configures environment variables
+- (no options) - Standard installation with all browsers
 
 ## Examples
 ```bash
-/venturo-e2e-web:install
-/venturo-e2e-web:install --force
-/venturo-e2e-web:install --browser=chromium --verbose
+/venturo-e2e-web:install                           # Standard installation
+/venturo-e2e-web:install --force                   # Force reinstall
+/venturo-e2e-web:install --browser=chromium        # Chromium only
+/venturo-e2e-web:install --verbose                 # Detailed output
 ```
 
-## Installation Steps
-- [ ] Playwright @latest installed
-- [ ] Browser binaries downloaded
-- [ ] Configuration file created
-- [ ] Test directory structure ready
-- [ ] Environment configured
+## Installation Includes
+- @playwright/test and dependencies
+- Browser binaries (chromium, firefox, webkit)
+- playwright.config.ts configuration file
+- Test directory structure (tests/)
+- Environment variables configuration
+- Installation validation
 
 ## Output
-Returns installation status with:
-- Installed component versions
+Returns:
+- Component versions installed
 - Configuration file location
 - Browser installation confirmation
-- Environment ready indicator
+- Environment ready status

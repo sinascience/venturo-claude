@@ -5,7 +5,14 @@ capabilities: ["playwright-installation", "browser-setup", "environment-configur
 
 # Installer
 
+**THIS AGENT IS INVOKED BY: `/venturo-e2e-web:install` command**
+
 Responsible for Playwright installation and configuration ONLY. Does not handle test execution or debugging.
+
+## When You Are Used
+- User runs `/venturo-e2e-web:install` command
+- Installation or configuration required
+- Playwright setup needed for project
 
 ## Responsibilities
 - Install @playwright/test and dependencies
