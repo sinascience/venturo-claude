@@ -60,10 +60,10 @@ Standardize test execution process to ensure reliable, consistent test runs with
 1. **Execution Command Preparation**
    ```bash
    # Standard execution
-   npx playwright test tests/features/{feature-name}/{file-name}.spec.ts
+   npx playwright test tests/{feature-name}/{file-name}.spec.ts
 
    # Headed mode for debugging
-   HEADED=true npx playwright test tests/features/{feature-name}/{file-name}.spec.ts
+   HEADED=true npx playwright test tests/{feature-name}/{file-name}.spec.ts
 
    # Parallel execution
    npx playwright test --workers=4

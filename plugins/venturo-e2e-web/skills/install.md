@@ -94,6 +94,7 @@ Standardize Playwright installation process to ensure consistent, reliable setup
 
 2. **Configuration File Creation**
    - [ ] Create playwright.config.ts or .js file
+   - [ ] **MANDATORY** validate and make sure `testDir: "./tests"` on playwright.config.ts or .js file
    - [ ] Set up basic project structure
    - [ ] Configure test directories
    - [ ] Initialize sample tests if needed
