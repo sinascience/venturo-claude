@@ -3,7 +3,7 @@
     "playwright": {
       "command": "npx",
       "args": [
-        "@playwright/mcp@0.2.0"
+        "@playwright/mcp@latest"
       ],
       "env": {
         "PLAYWRIGHT_BROWSERS_PATH": "0"
