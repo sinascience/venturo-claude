@@ -339,13 +339,11 @@ Priority order:
 2. getByRole + accessible name (for semantic HTML)
    Example: page.getByRole('button', { name: 'Submit' })
 
-3. getByLabel (for form inputs)
-   Example: page.getByLabel('Email Address')
-
-4. NEVER use:
+3. NEVER use:
    - getByText() for dynamic/multilingual content
    - XPath selectors
    - CSS selectors (unless no alternative)
+   - getByLabel()
 
 ### **2. Selector Documentation**
 Always comment source location:
@@ -473,7 +471,7 @@ tests/
 ### If selector not found:
 - Flag in test plan
 - Suggest adding data-testid to component
-- Propose alternative (getByRole/getByLabel)
+- Propose alternative (getByRole)
 - Add TODO comment in generated code
 - Don't block generation, but warn user
 
